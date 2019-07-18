@@ -1,4 +1,4 @@
 # PHRANK!
-## The React-Redux-Ruby App Phor Phans.
+## The React-Redux-Rails App Phor Phans.
 
 Come back soon!
