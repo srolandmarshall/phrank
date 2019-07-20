@@ -3,11 +3,8 @@ import Show from './Show'
 
 class Shows extends Component {
   render() {
-    const {restaurants, deleteRestaurant} = this.props;
     return(
-      <ul>
-        <li><Show /></li>
-      </ul>
+      <Show />
     );
   }
 };

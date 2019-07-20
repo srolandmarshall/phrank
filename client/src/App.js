@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ShowInput from './components/ShowInput'
-import Shows from './components/Show'
+import ShowContainer from './containers/ShowContainer'
 import './App.css'
 
 function App() {

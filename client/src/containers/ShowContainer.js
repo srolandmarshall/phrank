@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import ShowInput from '../components/Shows/ShowInput'
-import Shows from '../components/Shows/Shows'
+// import { connect } from 'react-redux'
+import ShowInput from '../components/ShowInput'
+import Shows from '../components/Shows'
 
 class ShowsContainer extends Component {
 
@@ -9,11 +9,13 @@ class ShowsContainer extends Component {
     return (
       <div>
         <ShowInput />
-        <Shows Shows={this.props.Shows} deleteShow={this.props.deleteShow}/>
+        <h3>Added Shows</h3>
+        <Shows />
       </div>
     )
   }
 }
+export default ShowsContainer;
 
 // const mapStateToProps = state => ({
 //     Shows: state.Shows
@@ -24,4 +26,4 @@ class ShowsContainer extends Component {
 //   deleteShow: id => dispatch({ type: "DELETE_Show", id})
 // })
 
-export default connect(ShowsContainer)
+// export default connect(null)(ShowsContainer)
