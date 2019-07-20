@@ -1,4 +1,4 @@
 # PHRANK!
 ## The React-Redux-Rails App for Phans.
 
-Come back soon!
+An application for tracking, ranking, and listening to your phavorite Phish shows.
