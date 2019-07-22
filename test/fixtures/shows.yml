@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  link: MyString
+  location: MyString
+  notes: MyString
+  showdate: MyString
+  show_id: 1
+  tour_when: MyString
+  tour_id: 1
+  tour_name: MyString
+  venue: MyString
+  venue_id: 1
+  rating: 9.99
+  user_rating: 9.99
+  user_rank: 1
+  setlist: MyText
+  songs: 
+  sets: 
+  https: 
+
+two:
+  id: 
+  link: MyString
+  location: MyString
+  notes: MyString
+  showdate: MyString
+  show_id: 1
+  tour_when: MyString
+  tour_id: 1
+  tour_name: MyString
+  venue: MyString
+  venue_id: 1
+  rating: 9.99
+  user_rating: 9.99
+  user_rank: 1
+  setlist: MyText
+  songs: 
+  sets: 
+  https: 
