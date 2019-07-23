@@ -1,14 +1,17 @@
 class ShowsController < ApplicationController
 
   def index
-    if param[:showdate]
+    if params[:showdate]
       @shows = Show.where(showdate: params[:showdate])
-    elsif param[:venue]
+    elsif params[:venue]
+      binding.pry
       @shows = Show.where(venue: params[:venue])
+    elsif params[:show_id]
+      @shows = Show.where(show_id: params[:show_id])
     else
       @shows = Show.all
     end
-
+    render json: @shows, status: 200
   end
 
   def show
