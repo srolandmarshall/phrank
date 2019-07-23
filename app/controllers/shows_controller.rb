@@ -4,7 +4,6 @@ class ShowsController < ApplicationController
     if params[:showdate]
       @shows = Show.where(showdate: params[:showdate])
     elsif params[:venue]
-      binding.pry
       @shows = Show.where(venue: params[:venue])
     elsif params[:show_id]
       @shows = Show.where(show_id: params[:show_id])
