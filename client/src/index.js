@@ -6,8 +6,8 @@ import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import showReducer from './reducers/showReducer'
-const store = createStore(showReducer, applyMiddleware(thunk))
+import rootReducer from './reducers/index'
+const store = createStore(rootReducer, applyMiddleware(thunk))
 ReactDOM.render(<Provider store={store}>
     <App />
   </Provider>, document.getElementById('root'));
