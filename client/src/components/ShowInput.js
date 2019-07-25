@@ -1,23 +1,32 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-date-picker'
 
+var dateFormat = require('dateformat');
+
 class ShowInput extends Component {
 
-  state = {
-    date: new Date()
-  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    };
+  };
 
   onChange = date => this.setState({date})
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("Submitted");
     // TODO: Check for Show
     // TODO: Create error if no shows
-    // TODO: Add Show Reducer Tie-in 
+    // TODO: Add Show Reducer Tie-in
+
     this.setState({
       date: new Date()
     })
+    const shortDate = dateFormat(this.state.date, "shortDate")
+    console.log("Submitted "+shortDate);
+    console.log(this.props.fetchShow(shortDate));
+
   }
 
   render() {
