@@ -10,20 +10,9 @@ class ShowsContainer extends Component {
       <div>
         <ShowInput fetchShow={this.props.fetchShow}/>
         <h3>Added Shows</h3>
-        <Shows />
+        <Shows shows={this.props.shows}/>
       </div>
     )
   }
 }
 export default ShowsContainer;
-
-// const mapStateToProps = state => ({
-//     Shows: state.Shows
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   addShow: name => dispatch({ type: "ADD_Show", name }),
-//   deleteShow: id => dispatch({ type: "DELETE_Show", id})
-// })
-
-// export default connect(null)(ShowsContainer)

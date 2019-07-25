@@ -3,8 +3,9 @@ import Show from './Show'
 
 class Shows extends Component {
   render() {
+    const { shows } = this.props.shows;
     return(
-      <Show />
+      shows.map(show => <Show key={show.id} show={show} />)
     );
   }
 };

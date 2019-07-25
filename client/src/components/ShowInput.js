@@ -8,7 +8,7 @@ class ShowInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
+      date: new Date('June 19, 2019'),
     };
   };
 
