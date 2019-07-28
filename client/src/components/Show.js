@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import parse from 'html-react-parser';
 class Show extends Component {
 
-
-
   render() {
-    const show = this.props.show[0];
+    const show = this.props.show;
     return (
       <div className="show">
         <h4>{show.showdate}</h4>

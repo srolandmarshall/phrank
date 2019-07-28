@@ -7,6 +7,6 @@ export const fetchShow = (showDate) => {
    console.log(url);
    return fetch(url)
      .then(response=>response.json())
-     .then(data=>dispatch({type:"ADD_SHOW", payload: data}))
+     .then(data=>data.map(show => dispatch({type:"ADD_SHOW", payload: show})))
  }
 }
