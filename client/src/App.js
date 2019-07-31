@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ShowContainer from './containers/ShowContainer'
+import {fetchShow} from './actions/showActions'
 import './App.css'
 
 class App extends Component {
@@ -21,10 +22,10 @@ const mapStateToProps = (state) => {
   return {shows: state.shows}
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addshow: name => dispatch({ type: "ADD_SHOW", name }),
-  // deleteshow: id => dispatch({ type: "DELETE_SHOW", id}),
-  fetchShow: showDate => dispatch({ type:"FETCH_SHOW", showDate})
+const mapDispatchToProps = dispatch => ({
+  addShow: name => dispatch({ type: "ADD_SHOW", name }),
+  // deleteShow: id => dispatch({ type: "DELETE_SHOW", id}),
+  fetchShow: showDate => dispatch(fetchShow(showDate))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
