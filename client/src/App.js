@@ -13,7 +13,8 @@ class App extends Component {
       <div className="App">
         <h1>Phrank!</h1>
         <h2>The application for tracking, ranking, and listening to your phavorite Phish shows.</h2>
-      <ShowContainer shows={this.props.shows} fetchShow={this.props.fetchShow}/>
+        <ShowContainer shows={this.props.shows}       deleteShow={this.props.deleteShow}
+        fetchShow={this.props.fetchShow} />
     </div>)
   };
 }
@@ -24,7 +25,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   addShow: name => dispatch({ type: "ADD_SHOW", name }),
-  // deleteShow: id => dispatch({ type: "DELETE_SHOW", id}),
+  deleteShow: id => dispatch({ type: "DELETE_SHOW", id}),
   fetchShow: showDate => dispatch(fetchShow(showDate))
 })
 

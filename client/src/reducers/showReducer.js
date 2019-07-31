@@ -18,6 +18,9 @@ export default function showReducer(state= {
       else {
         return {...state, loading: false, shows: [...state.shows, action.payload]}
       }
+    case "DELETE_SHOW":
+      const shows = state.shows.filter(restaurant => restaurant.id !== action.id)
+      return {...state, shows}
     default:
       return state;
   }
