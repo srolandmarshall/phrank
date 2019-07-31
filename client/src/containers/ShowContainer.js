@@ -10,7 +10,7 @@ class ShowsContainer extends Component {
       <div>
         <ShowInput fetchShow={this.props.fetchShow}/>
         <h3>Added Shows</h3>
-        <Shows deleteShow={this.props.deleteShow} shows={this.props.shows}/>
+        <Shows deleteShow={this.props.deleteShow} shows={this.props.shows.shows}/>
       </div>
     )
   }
