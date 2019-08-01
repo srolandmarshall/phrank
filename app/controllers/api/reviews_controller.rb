@@ -3,8 +3,13 @@ class API::ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    @reviews = Review.all
-
+    if params[:user_id]
+      @reviews = User.find(params[:user_id]).reviews
+    elsif params[:show_id]
+      @reviews = Show.find(params[:show_id]).reviews
+    else
+      @reviews = Review.all
+    end
     render json: @reviews
   end
 

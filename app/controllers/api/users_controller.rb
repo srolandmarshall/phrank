@@ -4,7 +4,7 @@ class API::UsersController < ApplicationController
   # GET /users
   def index
     if params[:show_id]
-      @users = Show.find(params[:show_id]).users
+      @users = Show.find(params[:show_id]).users      
     else
       @users = User.all
     end
