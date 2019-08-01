@@ -1,23 +1,24 @@
 /*
-Show
--- UID
--- Date
--- Location
--- Venue
--- Rating
--- Setlist
--- Songs
--- Sets
+  User Stories:
+    • User should be able to log in
+    • User should be able to set username/email/password from a settings page
+    • User should be able to add shows to profile
+    • User should be able to rank those shows top to bottom
+    • User should be able to re-rank those shows by dragging
+    • User should be able to type a review for a show
+    • User should be able to set a rating for a show (1 through 5 stars)
+
+  Application Stories
+    • / should show a list of recently reviewed shows by all users
+    • / should be visible to all users
+    • All pages should have a menu at the top with "Add Show", "My Shows", and "Logout"
+      • ""
+    • :user/shows should list a user's Shows
+    • /shows/:date should show a show with all reviews for that show
+    •
+
+
+
+
 
 */
-
-let show = {
-  id: 1,
-  date: new Date(),
-  location: "Test Location",
-  venue: "Venue",
-  rating: 2.5,
-  setlist: `<p><span class='set-label'>Set 1</span>: <a href='http://phish.net/song/long-cool-woman-in-a-black-dress' class='setlist-song'>Long Cool Woman in a Black Dress</a><sup title="Phish debut.">[1]</sup>, <a href='http://phish.net/song/proud-mary' class='setlist-song'>Proud Mary</a><sup title='Phish debut.' title='Phish debut.'>[1]</sup>, <a href='http://phish.net/song/in-the-midnight-hour' class='setlist-song'>In the Midnight Hour</a><sup title='Phish debut.' title='Phish debut.'>[1]</sup>, <a href='http://phish.net/song/squeeze-box' class='setlist-song'>Squeeze Box</a><sup title='Phish debut.' title='Phish debut.'>[1]</sup>, <a href='http://phish.net/song/roadhouse-blues' class='setlist-song'>Roadhouse Blues</a><sup title='Phish debut.' title='Phish debut.'>[1]</sup>, <a href='http://phish.net/song/happy-birthday-to-you' class='setlist-song'>Happy Birthday to You</a><sup title='Phish debut.' title='Phish debut.'>[1]</sup></p><p><span class='set-label'>Set 2</span>: <a href='http://phish.net/song/scarlet-begonias' class='setlist-song'>Scarlet Begonias</a><sup title='Phish debut.' title='Phish debut.'>[1]</sup> > <a href='http://phish.net/song/fire-on-the-mountain' class='setlist-song'>Fire on the Mountain</a><sup title='Phish debut.' title='Phish debut.'>[1]</sup><p class='setlist-footer'>[1] Phish debut.<br></p>`,
-  songs: ['Long Cool Woman in a Black Dress', 'Proud Mary', 'In the Midnight Hour', 'Squeeze Box', 'Roadhouse Blues', 'Happy Birthday to You', 'Scarlet Begonias', 'Fire on the Mountain'],
-  sets: ['Set 1', 'Set 2']
-}
