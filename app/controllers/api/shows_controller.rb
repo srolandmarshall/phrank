@@ -21,7 +21,6 @@ class API::ShowsController < ApplicationController
   def by_showdate
     render json: @shows, status: 200
   end
-  
 
   def show_params
     params.require(:show).permit(:link, :location, :notes, :showdate, :show_id, :tour_when, :tour_id, :tour_name, :venue, :venue_id, :rating, :setlist, :songs, :sets, user_ids:[], review_ids:[])

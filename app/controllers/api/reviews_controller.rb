@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class API::ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :update, :destroy]
 
   # GET /reviews
