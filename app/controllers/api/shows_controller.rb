@@ -7,6 +7,8 @@ class API::ShowsController < ApplicationController
       @shows = Show.where(venue: params[:venue])
     elsif params[:show_id]
       @shows = Show.where(show_id: params[:show_id])
+    elsif params[:user_id]
+      @shows = User.find(params[:user_id]).shows
     else
       @shows = Show.all
     end

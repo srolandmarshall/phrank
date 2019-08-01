@@ -3,8 +3,11 @@ class API::UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
-
+    if params[:show_id]
+      @users = Show.find(params[:show_id]).users
+    else
+      @users = User.all
+    end
     render json: @users
   end
 
