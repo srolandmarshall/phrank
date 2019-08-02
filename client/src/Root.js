@@ -3,7 +3,7 @@ import { Provider, connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import App from './App'
-import AddShow from './AddShow'
+import MyShows from './myShows'
 import {fetchShow} from './actions/showActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
@@ -14,12 +14,12 @@ const Root = ({ store, shows, addShow, deleteShow, fetchShow }) => (
       <Navbar bg="dark" variant="dark" sticky="top">
         <Nav className="mr-auto">
           <Link className="topLink" to="/">Home</Link>
-          <Link className="topLink" to="/addshow">Add Show</Link>
+          <Link className="topLink" to="/shows">My Shows</Link>
           <Link className="topLink" to="/reviews">Reviews</Link>
         </Nav>
       </Navbar>
       <Route exact path="/" render={() => <App />}/>
-      <Route path="/addshow" render={() => <AddShow shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} />} />
+      <Route path="/shows" render={() => <MyShows shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} />} />
     </Router>
   </Provider>
 )

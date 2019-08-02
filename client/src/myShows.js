@@ -1,14 +1,12 @@
-import React from 'react';
+import React from 'react'
 import ShowContainer from './containers/ShowContainer'
 
-
-const AddShow = (props) => {
+const MyShows = (props) => {
   return (
     <div>
       <ShowContainer shows={props.shows} addShow={props.addShow} deleteShow={props.deleteShow} fetchShow={props.fetchShow} />
     </div>
-    )
-
+  )
 }
 
-export default AddShow
+export default MyShows

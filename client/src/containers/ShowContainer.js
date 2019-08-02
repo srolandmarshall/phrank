@@ -8,9 +8,9 @@ class ShowsContainer extends Component {
   render() {
     return (
       <div>
-        <ShowInput fetchShow={this.props.fetchShow}/>
-        <h3>Added Shows</h3>
+        <h3>My Shows</h3>
         <Shows deleteShow={this.props.deleteShow} shows={this.props.shows.shows}/>
+        <ShowInput fetchShow={this.props.fetchShow}/>
       </div>
     )
   }
