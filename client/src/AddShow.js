@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ShowContainer from './containers/ShowContainer'
 
 
-const AddShow = () => {
+const AddShow = (props) => {
   return (
     <div>
-      <h3>AddShow</h3>
+      <ShowContainer shows={props.shows} addShow={props.addShow} deleteShow={props.deleteShow} fetchShow={props.fetchShow} />
     </div>
     )
-    // <ShowContainer shows={this.props.shows} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} />
 
 }
 

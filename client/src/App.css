@@ -23,11 +23,11 @@
   color: #61dafb;
 }
 
-a {
+a.topLink {
   color: white;
   margin: 10px;
 }
-a:hover {
+a.topLink:hover {
   color: rgb(185, 255, 242);
   text-decoration: none;
 }
