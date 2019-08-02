@@ -23,6 +23,15 @@
   color: #61dafb;
 }
 
+a {
+  color: white;
+  margin: 10px;
+}
+a:hover {
+  color: rgb(185, 255, 242);
+  text-decoration: none;
+}
+
 .show {
   margin-left: 20px;
 }
