@@ -3,12 +3,12 @@ import { Provider, connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import App from './App'
-import MyShows from './myShows'
-import {fetchShow} from './actions/showActions'
+import MyShows from './components/myShows'
+import {fetchShow, fetchShows} from './actions/showActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
-const Root = ({ store, shows, addShow, deleteShow, fetchShow }) => (
+const Root = ({ store, shows, addShow, deleteShow, fetchShow, fetchShows }) => (
   <Provider store={store}>
     <Router>
       <Navbar bg="dark" variant="dark" sticky="top">
@@ -19,7 +19,7 @@ const Root = ({ store, shows, addShow, deleteShow, fetchShow }) => (
         </Nav>
       </Navbar>
       <Route exact path="/" render={() => <App />}/>
-      <Route path="/shows" render={() => <MyShows shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} />} />
+      <Route path="/shows" render={() => <MyShows shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} fetchShows={fetchShows} />} />
     </Router>
   </Provider>
 )
@@ -31,7 +31,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   addShow: name => dispatch({ type: "ADD_SHOW", name }),
   deleteShow: id => dispatch({ type: "DELETE_SHOW", id}),
-  fetchShow: showDate => dispatch(fetchShow(showDate))
+  fetchShow: showDate => dispatch(fetchShow(showDate)),
+  fetchShows: userId => dispatch(fetchShows(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root)

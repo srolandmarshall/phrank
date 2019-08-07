@@ -6,7 +6,7 @@ class API::ShowsController < ApplicationController
     elsif params[:venue]
       @shows = Show.where(venue: params[:venue])
     elsif params[:show_id]
-      @shows = Show.where(show_id: params[:show_id])
+      @shows = Show.find(params[:show_id])
     elsif params[:user_id]
       @shows = User.find(params[:user_id]).shows
     else
@@ -18,10 +18,6 @@ class API::ShowsController < ApplicationController
   def show
     @show = Show.find(params[:id])
     render json: @show, status: 200
-  end
-
-  def by_showdate
-    render json: @shows, status: 200
   end
 
   def show_params

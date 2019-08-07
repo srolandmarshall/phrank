@@ -8,7 +8,8 @@ export default function showReducer(state= {
   loading: false
 }, action){
   switch (action.type) {
-    case "LOADING_SHOW":
+    case "LOADING":
+      console.log("Loading...");
       return {...state, loading: true};
     case "ADD_SHOW":
       if (showExists(state, action.payload)){
@@ -19,7 +20,7 @@ export default function showReducer(state= {
         return {...state, loading: false, shows: [...state.shows, action.payload]}
       }
     case "DELETE_SHOW":
-      const shows = state.shows.filter(restaurant => restaurant.id !== action.id)
+      const shows = state.shows.filter(show => show.id !== action.id)
       return {...state, shows}
     default:
       return state;

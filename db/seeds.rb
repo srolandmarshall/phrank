@@ -52,5 +52,3 @@ def seedReviews
     )
   end
 end
-
-seedReviews
