@@ -8,7 +8,7 @@ class ShowInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date('June 19, 2019'),
+      date: new Date('July 5, 2019'),
     };
   };
 
@@ -25,8 +25,7 @@ class ShowInput extends Component {
     })
     const shortDate = dateFormat(this.state.date, "shortDate")
     console.log("Submitted "+shortDate);
-    console.log(this.props.fetchShow(shortDate));
-
+    this.props.fetchShow(shortDate)
   }
 
   render() {

@@ -4,16 +4,15 @@ import Shows from '../components/Shows'
 
 class ShowsContainer extends Component {
 
-  componentWillMount(){
-    console.log("componentDidMount");
-    this.props.fetchShows(3)
+  componentDidMount(){
+    if (this.props.shows.shows.length === 0) {this.props.fetchShows(3)}
   }
 
   render() {
     return (
       <div>
         <Shows deleteShow={this.props.deleteShow} shows={this.props.shows.shows}/>
-        <ShowInput fetchShow={this.props.fetchShow}/>
+        <ShowInput addUserShow={this.props.addUserShow} fetchShow={this.props.fetchShow}/>
       </div>
     )
   }

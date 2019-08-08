@@ -10,6 +10,7 @@ namespace :api do
     resources :shows
   end
   resources :reviews
+  resources :user_shows, only: [:create]
 end
 
 end
