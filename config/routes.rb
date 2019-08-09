@@ -10,7 +10,7 @@ namespace :api do
     resources :shows
   end
   resources :reviews
-  resources :user_shows, only: [:create]
+  resources :user_shows, only: [:create, :destroy]
 end
 
 end

@@ -19,7 +19,7 @@ export default function showReducer(state= {
         return {...state, loading: false, shows: [...state.shows, action.payload]}
       }
     case "DELETE_SHOW":
-      const shows = state.shows.filter(show => show.id !== action.id)
+      const shows = state.shows.filter(show => show.id !== action.payload.id)
       return {...state, shows}
     case "ADD_SHOW_TO_USER":
       const userId = 3;

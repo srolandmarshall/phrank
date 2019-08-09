@@ -4,7 +4,7 @@ import Show from './Show'
 class Shows extends Component {
   render() {
     return(
-      this.props.shows.map(show => <Show key={show.id} show={show} deleteShow={this.props.deleteShow} />)
+      this.props.shows.map(show => <Show key={show.id} show={show} deleteShow={this.props.deleteShow} removeUserShow={this.props.removeUserShow} />)
     );
   }
 };

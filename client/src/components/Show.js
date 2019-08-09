@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 class Show extends Component {
 
   handleClick = () => {
-    this.props.deleteShow(this.props.show.id)
+    this.props.removeUserShow(this.props.show.id, 3)
   }
 
   render() {

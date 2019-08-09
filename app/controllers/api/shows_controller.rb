@@ -27,6 +27,13 @@ class API::ShowsController < ApplicationController
     render json: @show, status: 200
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @show = Show.find(params[:id])
+    @user.shows.delete(@show)
+    render json: @show, status: 200
+  end
+
   def show_params
     params.require(:show).permit(:link, :location, :notes, :showdate, :show_id, :tour_when, :tour_id, :tour_name, :venue, :venue_id, :rating, :setlist, :songs, :sets, user_ids:[], review_ids:[])
   end

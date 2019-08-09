@@ -28,8 +28,20 @@ export const addUserShow = (showId, userId) => {
     const url = 'http://localhost:3001/api/users/'+userId+'/shows?show_id='+showId
     console.log(url);
     return fetch(url, {
-      method: 'post'
+      method: 'POST'
     }).then(response=>response.json())
     .then(data=>dispatch({type:"ADD_SHOW", payload: data}))
+  }
+}
+
+export const removeUserShow = (showId, userId) => {
+  return (dispatch) => {
+    dispatch({type:"SAVING"});
+    const url = 'http://localhost:3001/api/users/'+userId+'/shows/'+showId
+    console.log(url);
+    return fetch(url, {
+      method: 'DELETE'
+    }).then(response=>response.json())
+    .then(data=>dispatch({type:"DELETE_SHOW", payload: data}))
   }
 }
