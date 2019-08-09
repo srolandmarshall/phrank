@@ -5,27 +5,30 @@ const showExists = (state, show) => {
 
 export default function showReducer(state= {
   shows: [],
-  loading: false
+  loading: false,
+  saving: false,
+  deleting: false
 }, action){
   switch (action.type) {
     case "LOADING":
       console.log("Loading...");
       return {...state, loading: true};
+    case "SAVING":
+      console.log("Saving to DB...");
+      return {...state, saving: true};
+    case "DELETING":
+      console.log("Removing from DB...");
+      return {...state, deleting: true};
     case "ADD_SHOW":
       if (showExists(state, action.payload)){
         return state
       }
       else {
-        return {...state, loading: false, shows: [...state.shows, action.payload]}
+        return {...state, loading: false, saving: false, shows: [...state.shows, action.payload]}
       }
     case "DELETE_SHOW":
       const shows = state.shows.filter(show => show.id !== action.payload.id)
-      return {...state, shows}
-    case "ADD_SHOW_TO_USER":
-      const userId = 3;
-      const showId = action.payload.id
-      addUserShow(showId, userId)
-      return state;
+      return {...state, shows, deleting: false}
     default:
       return state;
   }

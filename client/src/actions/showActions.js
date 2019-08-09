@@ -36,7 +36,7 @@ export const addUserShow = (showId, userId) => {
 
 export const removeUserShow = (showId, userId) => {
   return (dispatch) => {
-    dispatch({type:"SAVING"});
+    dispatch({type:"DELETING"});
     const url = 'http://localhost:3001/api/users/'+userId+'/shows/'+showId
     console.log(url);
     return fetch(url, {
