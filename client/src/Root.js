@@ -1,23 +1,18 @@
 import React from 'react';
 import { Provider, connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './App'
+import NavBar from './NavBar'
 import MyShows from './components/myShows'
 import {fetchShow, fetchShows, addUserShow, removeUserShow} from './actions/showActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
+
 const Root = ({ store, shows, addShow, deleteShow, fetchShow, fetchShows, addUserShow, removeUserShow }) => (
   <Provider store={store}>
     <Router>
-      <Navbar bg="dark" variant="dark" sticky="top">
-        <Nav className="mr-auto">
-          <Link className="topLink" to="/">Home</Link>
-          <Link className="topLink" to="/shows">My Shows</Link>
-          <Link className="topLink" to="/reviews">Reviews</Link>
-        </Nav>
-      </Navbar>
+      <NavBar/>
       <Route exact path="/" render={() => <App />}/>
       <Route path="/shows" render={() => <MyShows shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} fetchShows={fetchShows} addUserShow={addUserShow} removeUserShow={removeUserShow}/>} />
     </Router>
