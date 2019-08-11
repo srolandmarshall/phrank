@@ -11,7 +11,12 @@ const NavBar = (props) => {
         <Link className="topLink" to="/">Home</Link>
         <Link className="topLink" to="/shows">My Shows</Link>
         <Link className="topLink" to="/reviews">Reviews</Link>
-        <Link className="topLink" to="/logout">Log Out</Link>
+          {!isAuthenticated && (
+          <Link onClick={() =>
+            loginWithRedirect({})
+          } className="topLink" to="/login">Login</Link>
+        )}
+        {isAuthenticated && <Link onClick={() => logout()} className="topLink" to="/logout">Log Out</Link>}
       </Nav>
     </Navbar>
   )

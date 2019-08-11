@@ -21,10 +21,12 @@ class API::ShowsController < ApplicationController
   end
 
   def create
-    @show = Show.find(params[:show_id])
-    @user = User.find(params[:user_id])
-    @user.shows << @show
-    render json: @show, status: 200
+    if (params[:show_id] && params[:user_id])
+      @show = Show.find(params[:show_id])
+      @user = User.find(params[:user_id])
+      @user.shows << @show
+      render json: @show, status: 200
+    end
   end
 
   def destroy

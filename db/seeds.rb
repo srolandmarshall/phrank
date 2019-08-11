@@ -52,3 +52,8 @@ def seedReviews
     )
   end
 end
+
+seedShows
+seedUsers
+seedUserShows
+seedReviews
