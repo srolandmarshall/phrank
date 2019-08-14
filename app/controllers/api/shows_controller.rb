@@ -1,5 +1,8 @@
 class API::ShowsController < ApplicationController
 
+  before_action :authenticate_user!
+
+
   def index
     if params[:showdate]
       @shows = Show.where(showdate: params[:showdate])

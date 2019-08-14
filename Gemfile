@@ -51,3 +51,7 @@ gem "faker", "~> 2.1"
 gem "devise", "~> 4.6"
 
 gem "mysql2", "~> 0.5.2"
+
+gem "active_model_serializers", "~> 0.10.10", require: true
+
+gem "pry-remote", "~> 0.1.8"

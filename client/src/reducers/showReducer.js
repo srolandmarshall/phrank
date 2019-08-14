@@ -1,9 +1,8 @@
-import {addUserShow} from '../actions/showActions'
 const showExists = (state, show) => {
   return state.shows.some((s) => s.id === show.id)
 }
 
-export default function showReducer(state= {
+export default function showReducer(state = {
   shows: [],
   loading: false,
   saving: false,

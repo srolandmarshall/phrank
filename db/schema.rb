@@ -17,15 +17,15 @@ ActiveRecord::Schema.define(version: 2019_08_13_030252) do
     t.integer "user_id"
     t.text "content"
     t.decimal "rating", precision: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "show_reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "show_id"
     t.bigint "review_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["review_id"], name: "index_show_reviews_on_review_id"
     t.index ["show_id"], name: "index_show_reviews_on_show_id"
   end
@@ -47,15 +47,15 @@ ActiveRecord::Schema.define(version: 2019_08_13_030252) do
     t.text "setlist"
     t.string "songs"
     t.string "sets"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_shows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "show_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["show_id"], name: "index_user_shows_on_show_id"
     t.index ["user_id"], name: "index_user_shows_on_user_id"
   end
@@ -63,13 +63,14 @@ ActiveRecord::Schema.define(version: 2019_08_13_030252) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "username"
     t.string "state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "access_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
