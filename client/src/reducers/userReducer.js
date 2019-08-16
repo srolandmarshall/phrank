@@ -16,7 +16,8 @@ export default function userReducer(state = {
       console.log("Removing from DB...");
       return {...state, deleting: true};
     case "SET_USER":
-      return state;
+      const id = action.payload.access_token.split(":")[0]
+      return {...state, userToken: action.payload.access_token, userId: id};
     default:
       return state;
   }

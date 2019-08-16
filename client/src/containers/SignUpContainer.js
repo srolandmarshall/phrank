@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom';
+
 
 class SignUpContainer extends Component {
 
@@ -7,8 +9,29 @@ class SignUpContainer extends Component {
     email: '',
     username: '',
     password: '',
-    passwordConfirm: ''
+    passwordConfirm: '',
+    registered: false
   };
+
+  signUpProcess = (payload) => {
+    this.setState({
+      ...this.state,
+      registered: true
+    })
+    console.log("redirect should hit");
+    debugger
+    this.props.history.push('/')
+  }
+
+  resetState = () => {
+    this.setState({
+        email: '',
+        username: '',
+        password: '',
+        passwordConfirm: '',
+        registered: false
+      })
+  }
 
   handleUserChange = (event) => {
     event.preventDefault();
@@ -32,13 +55,10 @@ class SignUpContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.registerUser(this.state.email, this.state.password)
-    this.setState({
-        email: '',
-        username: '',
-        password: '',
-        passwordConfirm: ''
-      })
+    this.props.registerUser(this.state.email, this.state.password).then(
+      (entry)=>{
+        this.signUpProcess(entry.payload)
+    })
   }
 
   render() {
@@ -72,4 +92,4 @@ class SignUpContainer extends Component {
   }
 }
 
-export default SignUpContainer
+export default withRouter(SignUpContainer)
