@@ -18,9 +18,7 @@ class SignUpContainer extends Component {
       ...this.state,
       registered: true
     })
-    console.log("redirect should hit");
-    debugger
-    this.props.history.push('/')
+    this.props.history.push('/shows')
   }
 
   resetState = () => {

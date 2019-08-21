@@ -7,11 +7,11 @@ import MyShows from './components/myShows'
 import SignUpContainer from './containers/SignUpContainer'
 import SignInContainer from './containers/SignInContainer'
 import {fetchShow, fetchShows, addUserShow, removeUserShow} from './actions/showActions'
-import {registerUser} from './actions/userActions'
+import {registerUser, loginUser} from './actions/userActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
-const Root = ({ store, shows, addShow, deleteShow, fetchShow, fetchShows, addUserShow, removeUserShow, registerUser }) => (
+const Root = ({ store, user, shows, addShow, deleteShow, fetchShow, fetchShows, addUserShow, removeUserShow, registerUser, loginUser }) => (
   <Provider store={store}>
     <Router>
       <Navbar bg="dark" variant="dark" sticky="top">
@@ -19,21 +19,24 @@ const Root = ({ store, shows, addShow, deleteShow, fetchShow, fetchShows, addUse
           <Link className="topLink" to="/">Home</Link>
           <Link className="topLink" to="/shows">My Shows</Link>
           <Link className="topLink" to="/reviews">Reviews</Link>
-          <Link className="topLink" to="/users/sign_in">Sign In</Link>
-          <Link className="topLink" to="/users/sign_up">Register</Link>
+          <Link className="topLink" to="/sign_in">Sign In</Link>
+          <Link className="topLink" to="/sign_up">Register</Link>
 
         </Nav>
       </Navbar>
       <Route exact path="/" render={() => <App />}/>
-      <Route path="/users/sign_in" render={()=> <SignInContainer />}/>
-      <Route path="/users/sign_up" render={()=> <SignUpContainer registerUser={registerUser} />}/>
-      <Route path="/shows" render={() => <MyShows shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} fetchShows={fetchShows} addUserShow={addUserShow} removeUserShow={removeUserShow}/>} />
+      <Route path="/sign_in" render={()=> <SignInContainer loginUser={loginUser} />}/>
+      <Route path="/sign_up" render={()=> <SignUpContainer registerUser={registerUser} />}/>
+      <Route path="/shows" render={() => <MyShows user={user} shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} fetchShows={fetchShows} addUserShow={addUserShow} removeUserShow={removeUserShow}/>} />
     </Router>
   </Provider>
 )
 
 const mapStateToProps = (state, ownProps) => {
-  return {shows: state.shows}
+  return {
+    shows: state.shows,
+    user: state.users
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -43,7 +46,8 @@ const mapDispatchToProps = dispatch => ({
   fetchShows: userId => dispatch(fetchShows(userId)),
   addUserShow: (showId, userId) => dispatch(addUserShow(showId, userId)),
   removeUserShow: (showId, userId) => dispatch(removeUserShow(showId, userId)),
-  registerUser: (email, password) => dispatch(registerUser(email, password))
+  registerUser: (email, password) => dispatch(registerUser(email, password)),
+  loginUser: (email, password) => dispatch(loginUser(email, password))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root)

@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate_user_from_token!
 
-  # POST /v1/login
+  # POST /login
   def create
     @user = User.find_for_database_authentication(email: params[:username])
     return invalid_login_attempt unless @user
@@ -14,11 +14,16 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find_for_database_authentication(email: params[:username])
+    sign_out :user, @user
+  end
+
   private
 
   def invalid_login_attempt
     warden.custom_failure!
-    render json: {error: I18n.t('sessions_controller.invalid_login_attempt')}, status: :unprocessable_entity
+    render json: {error: ('sessions_controller.invalid_login_attempt')}, status: :unprocessable_entity
   end
 
 end

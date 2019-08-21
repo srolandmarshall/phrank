@@ -1,5 +1,6 @@
 class API::ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :update, :destroy]
+  before_action :authenticate_user_from_token!, except: [:show, :index]
 
   # GET /reviews
   def index

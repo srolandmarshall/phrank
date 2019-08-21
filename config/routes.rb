@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-devise_for :users, only: []
-root to: "home#index"
+devise_for :users, only: [:create, :new]
 
 namespace :api do
   resources :shows do

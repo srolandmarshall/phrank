@@ -22,7 +22,7 @@ def seedShows
     t.sets = row['sets']
     t.save
   end
-  puts "There are now #{Show.count} rows in the transactions table"
+  puts "There are now #{Show.count} rows in the Shows table"
 end
 
 def seedUsers
@@ -53,4 +53,6 @@ def seedReviews
   end
 end
 
-seedUsers
+seedShows
+seedUserShows
+seedReviews

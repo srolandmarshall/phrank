@@ -1,7 +1,6 @@
 class API::ShowsController < ApplicationController
 
-  before_action :authenticate_user!
-
+  before_action :authenticate_user_from_token!, except: [:show, :index]
 
   def index
     if params[:showdate]

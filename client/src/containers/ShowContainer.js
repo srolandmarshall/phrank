@@ -5,14 +5,24 @@ import Shows from '../components/Shows'
 class ShowsContainer extends Component {
 
   componentDidMount(){
-    if (this.props.shows.shows.length === 0) {this.props.fetchShows(3)}
+    if (this.props.user.userId !== -1) {
+      console.log("fetch should fire")
+      this.props.fetchShows(this.props.user.userId)
+    }
+    else {
+      this.setState({
+        shows: {
+          shows: []
+        }
+      })
+    }
   }
 
   render() {
     return (
       <div>
-        <Shows deleteShow={this.props.deleteShow} shows={this.props.shows.shows} removeUserShow={this.props.removeUserShow} />
-        <ShowInput addUserShow={this.props.addUserShow} fetchShow={this.props.fetchShow} />
+        <Shows user={this.props.user} deleteShow={this.props.deleteShow} shows={this.props.shows.shows} removeUserShow={this.props.removeUserShow} />
+        <ShowInput user={this.props.user} addUserShow={this.props.addUserShow} fetchShow={this.props.fetchShow} />
       </div>
     )
   }
