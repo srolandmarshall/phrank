@@ -31,7 +31,7 @@ def authenticate_user_from_token!
      # User can access
      sign_in user, store: false
    else
-     @@message = "auth did not match or user was not passed"
+     @@message = "did not match"+auth_token+" or user was not passed"
      authentication_error
    end
  end

@@ -6,7 +6,6 @@ class ShowsContainer extends Component {
 
   componentDidMount(){
     if (this.props.user.userId !== -1) {
-      console.log("fetch should fire")
       this.props.fetchShows(this.props.user.userId)
     }
     else {

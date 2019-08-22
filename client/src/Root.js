@@ -42,10 +42,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   addShow: name => dispatch({ type: "ADD_SHOW", name }),
   deleteShow: id => dispatch({ type: "DELETE_SHOW", id}),
-  fetchShow: showDate => dispatch(fetchShow(showDate)),
+  fetchShow: (showDate, user) => dispatch(fetchShow(showDate, user)),
   fetchShows: userId => dispatch(fetchShows(userId)),
   addUserShow: (showId, userId) => dispatch(addUserShow(showId, userId)),
-  removeUserShow: (showId, userId) => dispatch(removeUserShow(showId, userId)),
+  removeUserShow: (showId, user) => dispatch(removeUserShow(showId, user)),
   registerUser: (email, password) => dispatch(registerUser(email, password)),
   loginUser: (email, password) => dispatch(loginUser(email, password))
 })
