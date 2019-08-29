@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     if @user.valid_password?(params[:password])
       sign_in :user, @user
       cookies[:user]=@user
+      puts "cookie/session?"
+      session[:user_id]=@user.id
+      puts session[:user_id]
       render json: @user, serializer: SessionSerializer, root: nil
     else
       invalid_login_attempt
