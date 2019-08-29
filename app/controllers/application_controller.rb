@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-
+include ActionController::Cookies
 before_action :authenticate_user_from_token!, except: [:new, :create]
 
 respond_to :json
