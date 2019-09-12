@@ -11,6 +11,7 @@ class API::ShowsController < ApplicationController
       @shows = Show.find(params[:show_id])
     elsif params[:user_id]
       @shows = User.find(params[:user_id]).shows
+      @shows = @shows.sort_by{|show| show.id}
     else
       @shows = Show.all
     end

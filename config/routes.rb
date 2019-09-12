@@ -16,5 +16,7 @@ namespace :api do
 end
 
 resource :login, only: [:create], controller: :sessions
+resource :logout, only: [:destroy], controller: :sessions
+get '/current_user', to: 'sessions#current_user'
 
 end

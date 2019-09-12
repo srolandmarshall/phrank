@@ -25,7 +25,6 @@ class ShowInput extends Component {
     })
     const shortDate = dateFormat(this.state.date, "shortDate")
     console.log("Submitted "+shortDate);
-    debugger
     this.props.fetchShow(shortDate, this.props.user)
   }
 

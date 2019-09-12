@@ -8,9 +8,10 @@ class SessionsController < ApplicationController
 
     if @user.valid_password?(params[:password])
       sign_in :user, @user
-      cookies[:user]=@user
+      session[:user_id] = @user.id
+      cookies[:user_id]=@user.id
       puts "cookie/session?"
-      session[:user_id]=@user.id
+      puts cookies[:user_id]
       puts session[:user_id]
       render json: @user, serializer: SessionSerializer, root: nil
     else
@@ -23,11 +24,17 @@ class SessionsController < ApplicationController
     sign_out :user, @user
   end
 
+  def current_user
+     @current_user ||= User.find_by(id: session[:user_id])
+  end
+
   private
 
   def invalid_login_attempt
     warden.custom_failure!
     render json: {error: ('sessions_controller.invalid_login_attempt')}, status: :unprocessable_entity
   end
+
+
 
 end

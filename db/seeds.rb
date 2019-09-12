@@ -27,11 +27,14 @@ end
 
 def seedUsers
   10.times do
+    email = Faker::Internet.email
     User.create(
-      username: Faker::Beer.hop,
-      email: Faker::Internet.email
+      username: email,
+      email: email,
+      password: "123456"
     )
   end
+  puts "There are now #{User.count} rows in the Users table"
 end
 
 def seedUserShows
@@ -41,6 +44,7 @@ def seedUserShows
       show_id: rand(Show.first.id..Show.last.id)
     )
   end
+  puts "User+Show relations created: #{UserShow.count}"
 end
 
 def seedReviews
@@ -51,8 +55,8 @@ def seedReviews
       content: Faker::Lorem.paragraph
     )
   end
+  puts "Reviews created: #{Review.count}"
 end
-
 seedShows
 seedUserShows
 seedReviews
