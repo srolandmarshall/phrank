@@ -4,6 +4,10 @@ import Shows from '../components/Shows'
 
 class ShowsContainer extends Component {
 
+  componentWillMount(){
+    // checkforcurrentuser
+  }
+
   componentDidMount(){
     if (this.props.user.userId !== -1) {
       this.props.fetchShows(this.props.user.userId)

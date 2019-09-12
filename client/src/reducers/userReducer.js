@@ -17,7 +17,6 @@ export default function userReducer(state = {
       return {...state, deleting: true};
     case "SET_USER":
       const id = action.payload.access_token.split(":")[0]
-      document.cookie = `id=${id}` 
       return {...state, userToken: action.payload.access_token, userId: id};
     default:
       return state;
