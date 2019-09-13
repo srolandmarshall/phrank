@@ -7,11 +7,11 @@ import MyShows from './components/myShows'
 import SignUpContainer from './containers/SignUpContainer'
 import SignInContainer from './containers/SignInContainer'
 import {fetchShow, fetchShows, addUserShow, removeUserShow} from './actions/showActions'
-import {registerUser, loginUser} from './actions/userActions'
+import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
-const Root = ({ store, user, shows, addShow, deleteShow, fetchShow, fetchShows, addUserShow, removeUserShow, registerUser, loginUser }) => (
+const Root = ({ store, user, shows, addShow, deleteShow, fetchShow, fetchShows, getCurrentUser, addUserShow, removeUserShow, registerUser, loginUser }) => (
   <Provider store={store}>
     <Router>
       <Navbar bg="dark" variant="dark" sticky="top">
@@ -27,7 +27,7 @@ const Root = ({ store, user, shows, addShow, deleteShow, fetchShow, fetchShows, 
       <Route exact path="/" render={() => <App />}/>
       <Route path="/sign_in" render={()=> <SignInContainer loginUser={loginUser} />}/>
       <Route path="/sign_up" render={()=> <SignUpContainer registerUser={registerUser} />}/>
-      <Route path="/shows" render={() => <MyShows user={user} shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} fetchShows={fetchShows} addUserShow={addUserShow} removeUserShow={removeUserShow}/>} />
+      <Route path="/shows" render={() => <MyShows getCurrentUser={getCurrentUser} user={user} shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} fetchShows={fetchShows} addUserShow={addUserShow} removeUserShow={removeUserShow}/>} />
     </Router>
   </Provider>
 )
@@ -47,7 +47,8 @@ const mapDispatchToProps = dispatch => ({
   addUserShow: (showId, userId) => dispatch(addUserShow(showId, userId)),
   removeUserShow: (showId, user) => dispatch(removeUserShow(showId, user)),
   registerUser: (email, password) => dispatch(registerUser(email, password)),
-  loginUser: (email, password) => dispatch(loginUser(email, password))
+  loginUser: (email, password) => dispatch(loginUser(email, password)),
+  getCurrentUser: () => dispatch(getCurrentUser())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root)

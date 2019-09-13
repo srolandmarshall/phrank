@@ -1,15 +1,19 @@
 import React from 'react'
 import ShowContainer from '../containers/ShowContainer'
-import Cookies from 'js-cookie';
 
-const MyShows = (props) => {
+class MyShows extends React.Component{
+
+  componentWillMount(){
+
+  }
+
+  render(){
   return (
     <div>
       <h3>My Shows</h3>
-      <h2>Cookie says {Cookies.get('id')}</h2>
-      <ShowContainer user={props.user} shows={props.shows} addShow={props.addShow} deleteShow={props.deleteShow} fetchShow={props.fetchShow} fetchShows={props.fetchShows} addUserShow={props.addUserShow} removeUserShow={props.removeUserShow}/>
+      <ShowContainer getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>
     </div>
-  )
+  )}
 }
 
 export default MyShows

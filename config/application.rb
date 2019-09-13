@@ -34,7 +34,7 @@ module Phrank
       end
     end
     config.middleware.use ActionDispatch::Cookies
-
+    config.middleware.insert_after ActionDispatch::Cookies, ActionDispatch::Session::CookieStore, :key => '_namespace_key'
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.

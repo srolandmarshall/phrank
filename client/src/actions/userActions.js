@@ -44,3 +44,14 @@ export const loginUser = (email, password) => {
     .catch(error=>console.log(error))
   }
 }
+
+export const getCurrentUser = () => {
+  return (dispatch) => {
+    dispatch({type:"LOADING"});
+    const url = 'http://localhost:3001/current_user'
+    return fetch(url)
+    .then(response=>response.json())
+    .then(data=>dispatch({type:"SET_USER", payload: data}))
+        .catch(error=>console.log(error))
+  }
+}

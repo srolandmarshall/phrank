@@ -9,9 +9,7 @@ class SessionsController < ApplicationController
     if @user.valid_password?(params[:password])
       sign_in :user, @user
       session[:user_id] = @user.id
-      cookies[:user_id]=@user.id
       puts "cookie/session?"
-      puts cookies[:user_id]
       puts session[:user_id]
       render json: @user, serializer: SessionSerializer, root: nil
     else
@@ -21,11 +19,17 @@ class SessionsController < ApplicationController
 
   def destroy
     @user = User.find_for_database_authentication(email: params[:username])
-    sign_out :user, @user
+    session[:user_id] = nil
+    sign_out :user
   end
 
-  def current_user
-     @current_user ||= User.find_by(id: session[:user_id])
+  def currentuser
+    @current_user ||= User.find_by(id: session[:user_id])
+    if @current_user
+      render json: @current_user, serializer: SessionSerializer, root: nil
+    else
+      render json: {message: "No Current User"}
+    end
   end
 
   private

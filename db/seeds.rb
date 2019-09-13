@@ -57,6 +57,7 @@ def seedReviews
   end
   puts "Reviews created: #{Review.count}"
 end
+seedUsers
 seedShows
 seedUserShows
 seedReviews

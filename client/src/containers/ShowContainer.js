@@ -5,7 +5,7 @@ import Shows from '../components/Shows'
 class ShowsContainer extends Component {
 
   componentWillMount(){
-    // checkforcurrentuser
+    this.props.getCurrentUser()
   }
 
   componentDidMount(){
