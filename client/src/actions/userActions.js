@@ -29,8 +29,9 @@ export const loginUser = (email, password) => {
     const url = 'http://localhost:3001/login'
     const formData = JSON.stringify(
       { username: email,
-        password: password,
-        grant_type: 'password' }
+        email: email,
+        password: password
+      }
     );
     return fetch(url, {
       method: 'POST',

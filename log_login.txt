@@ -1,0 +1,26 @@
+# from Browser
+
+09:36:10 api.1  | Started POST "/login" for ::1 at 2019-09-13 09:36:10 -0400
+09:36:10 api.1  | Processing by SessionsController#create as JSON
+09:36:10 api.1  |   Parameters: {"username"=>"athena@toymarks.biz", "password"=>"[FILTERED]", "grant_type"=>"password", "session"=>{"username"=>"athena@toymarks.biz", "password"=>"[FILTERED]", "grant_type"=>"password"}}
+09:36:10 api.1  |   User Load (0.5ms)  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'athena@toymarks.biz' ORDER BY `users`.`id` ASC LIMIT 1
+09:36:10 api.1  |   ↳ app/controllers/sessions_controller.rb:6
+09:36:10 api.1  | cookie/session?
+09:36:10 api.1  | 1
+09:36:10 api.1  | [active_model_serializers] Rendered SessionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+09:36:10 api.1  | Completed 200 OK in 130ms (Views: 0.9ms | ActiveRecord: 0.5ms)
+
+# from Postman
+
+09:36:34 api.1  | Started POST "/login" for ::1 at 2019-09-13 09:36:34 -0400
+09:36:34 api.1  | Processing by SessionsController#create as */*
+09:36:34 api.1  |   Parameters: {"username"=>"athena@toymarks.biz", "email"=>"athena@toymarks.biz", "password"=>"[FILTERED]", "session"=>{"username"=>"athena@toymarks.biz", "email"=>"athena@toymarks.biz", "pa
+ssword"=>"[FILTERED]"}}
+09:36:34 api.1  |   User Load (0.5ms)  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'athena@toymarks.biz' ORDER BY `users`.`id` ASC LIMIT 1
+09:36:34 api.1  |   ↳ app/controllers/sessions_controller.rb:6
+09:36:34 api.1  |   User Load (0.4ms)  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+09:36:34 api.1  |   ↳ app/controllers/sessions_controller.rb:10
+09:36:34 api.1  | cookie/session?
+09:36:34 api.1  | 1
+09:36:34 api.1  | [active_model_serializers] Rendered SessionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+09:36:34 api.1  | Completed 200 OK in 133ms (Views: 0.8ms | ActiveRecord: 0.9ms)
