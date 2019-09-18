@@ -11,7 +11,7 @@ class SignInContainer extends Component {
     password: ''
   };
 
-  signInProcess = (payload) => {
+  signInProcess = () => {
     this.props.history.push('/shows')
   }
 
@@ -31,10 +31,8 @@ class SignInContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.loginUser(this.state.email, this.state.password).then(
-      (entry)=>{
-        this.signInProcess(entry.payload)
-    })
+    this.props.loginUser(this.state.email, this.state.password)
+    this.signInProcess()
   }
 
 

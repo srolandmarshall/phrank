@@ -39,7 +39,8 @@ export const loginUser = (email, password) => {
       headers: {
         'Accept': "application/json",
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }).then(response=>response.json())
     .then(data=>dispatch({type:"SET_USER", payload: data}))
     .catch(error=>console.log(error))
@@ -50,9 +51,16 @@ export const getCurrentUser = () => {
   return (dispatch) => {
     dispatch({type:"LOADING"});
     const url = 'http://localhost:3001/current_user'
-    return fetch(url)
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json'
+        },
+      credentials: 'include'
+      })
     .then(response=>response.json())
     .then(data=>dispatch({type:"SET_USER", payload: data}))
-        .catch(error=>console.log(error))
+      .catch(error=>console.log(error))
   }
 }

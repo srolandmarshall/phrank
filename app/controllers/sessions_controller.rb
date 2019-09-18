@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     return invalid_login_attempt unless @user
 
     if @user.valid_password?(params[:password])
-      puts sign_in :user, @user
+      sign_in :user, @user
       session[:user_id] = @user.id
       puts "cookie/session?"
       puts session[:user_id]

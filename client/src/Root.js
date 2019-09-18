@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import App from './App'
@@ -11,26 +11,33 @@ import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
-const Root = ({ store, user, shows, addShow, deleteShow, fetchShow, fetchShows, getCurrentUser, addUserShow, removeUserShow, registerUser, loginUser }) => (
-  <Provider store={store}>
-    <Router>
-      <Navbar bg="dark" variant="dark" sticky="top">
-        <Nav className="mr-auto">
-          <Link className="topLink" to="/">Home</Link>
-          <Link className="topLink" to="/shows">My Shows</Link>
-          <Link className="topLink" to="/reviews">Reviews</Link>
-          <Link className="topLink" to="/sign_in">Sign In</Link>
-          <Link className="topLink" to="/sign_up">Register</Link>
+class Root extends React.Component {
 
-        </Nav>
-      </Navbar>
-      <Route exact path="/" render={() => <App />}/>
-      <Route path="/sign_in" render={()=> <SignInContainer loginUser={loginUser} />}/>
-      <Route path="/sign_up" render={()=> <SignUpContainer registerUser={registerUser} />}/>
-      <Route path="/shows" render={() => <MyShows getCurrentUser={getCurrentUser} user={user} shows={shows} addShow={addShow} deleteShow={deleteShow} fetchShow={fetchShow} fetchShows={fetchShows} addUserShow={addUserShow} removeUserShow={removeUserShow}/>} />
-    </Router>
-  </Provider>
-)
+  componentDidMount(){
+    this.props.getCurrentUser()
+  }
+
+  render() {
+    return (
+        <Router>
+          <Navbar bg="dark" variant="dark" sticky="top">
+            <Nav className="mr-auto">
+              <Link className="topLink" to="/">Home</Link>
+              <Link className="topLink" to="/shows">My Shows</Link>
+              <Link className="topLink" to="/reviews">Reviews</Link>
+              <Link className="topLink" to="/sign_in">Sign In</Link>
+              <Link className="topLink" to="/sign_up">Register</Link>
+
+            </Nav>
+          </Navbar>
+          <Route exact path="/" render={() => <App />}/>
+          <Route path="/sign_in" render={()=> <SignInContainer loginUser={this.props.loginUser} />}/>
+          <Route path="/sign_up" render={()=> <SignUpContainer registerUser={this.props.registerUser} />}/>
+          <Route path="/shows" render={() => <MyShows getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
+        </Router>
+    )
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {
