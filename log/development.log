@@ -1126,6 +1126,7 @@ No serializer found for resource: #<Show id: 1289, link: "http://phish.net/setli
 Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 1.2ms)
 
 
+<<<<<<< HEAD
 Started GET "/current_user" for ::1 at 2019-09-19 00:44:47 -0400
   [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
   ↳ /Users/sam/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
@@ -1538,3 +1539,5 @@ No serializer found for resource: #<Show id: 1909, link: "http://phish.net/setli
 Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.8ms)
 
 
+=======
+>>>>>>> parent of 3a714d0... git ignore fixes
