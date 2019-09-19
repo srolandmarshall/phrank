@@ -3,10 +3,6 @@ import ShowContainer from '../containers/ShowContainer'
 
 class MyShows extends React.Component{
 
-  componentWillMount(){
-
-  }
-
   render(){
   return (
     <div>

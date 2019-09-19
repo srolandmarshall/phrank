@@ -18,6 +18,7 @@ class API::UsersController < ApplicationController
 
   # POST /users
   def create
+    puts user_params
     @user = User.new(user_params)
     if @user.save
       render json: @user, status: 200

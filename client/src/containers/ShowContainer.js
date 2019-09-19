@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import ShowInput from '../components/ShowInput'
 import Shows from '../components/Shows'
+import { connect } from 'react-redux'
 
 class ShowsContainer extends Component {
 
-  componentWillMount(){
-    this.props.getCurrentUser()
-  }
+
 
   componentDidMount(){
+    console.log("componentDidMount Show Container")
     if (this.props.user.userId !== -1) {
       this.props.fetchShows(this.props.user.userId)
     }
@@ -21,6 +21,13 @@ class ShowsContainer extends Component {
     }
   }
 
+  componentDidUpdate(prevProps){
+    console.log(prevProps)
+    if (this.props.user.userId !== prevProps.user.userId){
+      this.props.fetchShows(this.props.user.userId)
+    }
+  }
+
   render() {
     return (
       <div>
@@ -30,4 +37,12 @@ class ShowsContainer extends Component {
     )
   }
 }
-export default ShowsContainer;
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    shows: state.shows,
+    user: state.users
+  }
+}
+
+export default connect(mapStateToProps)(ShowsContainer);

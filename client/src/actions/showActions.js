@@ -19,6 +19,7 @@ export const fetchShows = (userId) => {
      return fetch(url)
        .then(response=>response.json())
        .then(data=>data.map(show => dispatch({type:"ADD_SHOW", payload: show})))
+       .catch(error=>console.log(error))
    }
   }
 

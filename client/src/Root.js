@@ -11,6 +11,8 @@ import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
+getCurrentUser()
+
 class Root extends React.Component {
 
   componentDidMount(){
