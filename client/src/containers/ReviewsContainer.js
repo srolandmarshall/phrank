@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Reviews from '../components/Reviews'
 import ReviewInput from '../components/ReviewInput'
@@ -26,4 +25,4 @@ class ReviewsContainer extends Component {
   }
 }
 
-export default ReviewsContainer
+export default connect(null,null)(ReviewsContainer)

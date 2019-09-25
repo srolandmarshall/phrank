@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Review from '../components/Review'
 // TODO: add remove review button
@@ -12,4 +11,4 @@ class Reviews extends Component {
   }
 }
 
-export default Reviews
+export default connect(null,null)(Reviews)
