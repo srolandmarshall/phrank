@@ -22,9 +22,8 @@ class API::ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
-
     if @review.save
-      render json: @review, status: :created, location: @review
+      render json: @review, status: :created
     else
       render json: @review.errors, status: :unprocessable_entity
     end
@@ -52,6 +51,7 @@ class API::ReviewsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def review_params
-      params.fetch(:review, {}).permit(show_id: -1, user_id: -1)
+      params.require(:review).permit(:show_id, :user_id, :content, :rating)
+      # params.require(:show).permit(:link, :location, :notes, :showdate, :show_id, :tour_when, :tour_id, :tour_name, :venue, :venue_id, :rating, :setlist, :songs, :sets, user_ids:[], review_ids:[])
     end
 end

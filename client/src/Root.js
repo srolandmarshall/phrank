@@ -8,6 +8,7 @@ import SignUpContainer from './containers/SignUpContainer'
 import SignInContainer from './containers/SignInContainer'
 import {fetchShow, fetchShows, addUserShow, removeUserShow} from './actions/showActions'
 import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
+import {fetchUserReviews} from './actions/reviewActions'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
@@ -35,7 +36,7 @@ class Root extends React.Component {
           <Route exact path="/" render={() => <App />}/>
           <Route path="/sign_in" render={()=> <SignInContainer loginUser={this.props.loginUser} />}/>
           <Route path="/sign_up" render={()=> <SignUpContainer registerUser={this.props.registerUser} />}/>
-          <Route path="/shows" render={() => <MyShows getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
+          <Route path="/shows" render={() => <MyShows fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
         </Router>
     )
   }
@@ -44,7 +45,8 @@ class Root extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     shows: state.shows,
-    user: state.users
+    user: state.users,
+    reviews: state.reviews
   }
 }
 
@@ -57,7 +59,8 @@ const mapDispatchToProps = dispatch => ({
   removeUserShow: (showId, user) => dispatch(removeUserShow(showId, user)),
   registerUser: (email, password) => dispatch(registerUser(email, password)),
   loginUser: (email, password) => dispatch(loginUser(email, password)),
-  getCurrentUser: () => dispatch(getCurrentUser())
+  getCurrentUser: () => dispatch(getCurrentUser()),
+  fetchUserReviews: (userId) => dispatch(fetchUserReviews(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root)

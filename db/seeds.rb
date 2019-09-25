@@ -52,7 +52,8 @@ def seedReviews
     Review.create(
       user_id: rand(User.first.id..User.last.id),
       show_id: rand(Show.first.id..Show.last.id),
-      content: Faker::Lorem.paragraph
+      content: Faker::Lorem.paragraph,
+      rating: rand(1.0..5.0)
     )
   end
   puts "Reviews created: #{Review.count}"

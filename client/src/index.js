@@ -8,16 +8,6 @@ import Root from './Root';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers/index'
 
-const onRedirectCallback = appState => {
-  window.history.replaceState(
-    {},
-    document.title,
-    appState && appState.targetUrl
-      ? appState.targetUrl
-      : window.location.pathname
-  );
-};
-
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 ReactDOM.render(

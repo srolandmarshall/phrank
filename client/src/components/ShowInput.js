@@ -16,7 +16,7 @@ class ShowInput extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // TODO: Check for Show
+
     // TODO: Create error if no shows
     // TODO: Add Show Reducer Tie-in
 

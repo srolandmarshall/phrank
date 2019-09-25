@@ -1,6 +1,10 @@
-export default function userReducer(state = {
-  userToken: "",
-  userId: -1,
+const reviewExists = (state, showId) => {
+  debugger
+  return state.reviews.some((r) => r.show_id === showId)
+}
+
+export default function reviewReducer(state = {
+  reviews: [],
   loading: false,
   saving: false,
   deleting: false,
@@ -15,11 +19,8 @@ export default function userReducer(state = {
     case "DELETING":
       console.log("Removing from DB...");
       return {...state, deleting: true};
-    case "SET_USER":
-      console.log("Setting user...");
-      state = {...state, userToken: action.payload.access_token, userId: action.payload.user_id, email: action.payload.email}
-      console.log(state)
-      return state;
+    case "ADD_REVIEW":
+      return {...state, loading: false, saving: false, reviews: [...state.reviews, action.payload]}      
     default:
       return state;
   }
