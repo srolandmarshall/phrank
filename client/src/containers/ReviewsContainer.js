@@ -19,7 +19,7 @@ class ReviewsContainer extends Component {
       </div>
     }
     else {
-      return <ReviewInput />
+      return <ReviewInput show={this.props.show} user={this.props.user} />
     }
 
   }

@@ -19,7 +19,7 @@ export const createReview = (user, show, review) => {
         review: {
           content: review.content,
           user_id: user.userId,
-          show_id: show.showId,
+          show_id: show.id,
           rating: review.rating
         }
       }
