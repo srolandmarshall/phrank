@@ -49,15 +49,18 @@ end
 
 def seedReviews
   40.times do
+    user_id = rand(User.first.id..User.last.id)
+    show_id = User[user_id].shows.ids.sample
     Review.create(
-      user_id: rand(User.first.id..User.last.id),
-      show_id: rand(Show.first.id..Show.last.id),
+      user_id: user_id,
+      show_id: show_id,
       content: Faker::Lorem.paragraph,
       rating: rand(1.0..5.0)
     )
   end
   puts "Reviews created: #{Review.count}"
 end
+
 seedShows
 seedUsers
 seedUserShows
