@@ -1,8 +1,3 @@
-const reviewExists = (state, showId) => {
-  debugger
-  return state.reviews.some((r) => r.show_id === showId)
-}
-
 export default function reviewReducer(state = {
   reviews: [],
   loading: false,
@@ -20,7 +15,10 @@ export default function reviewReducer(state = {
       console.log("Removing from DB...");
       return {...state, deleting: true};
     case "ADD_REVIEW":
-      return {...state, loading: false, saving: false, reviews: [...state.reviews, action.payload]}      
+      return {...state, loading: false, saving: false, reviews: [...state.reviews, action.payload]}
+    case "DELETE_REVIEW":
+      const reviews = action.payload
+      return {...state, reviews, deleting: false}
     default:
       return state;
   }

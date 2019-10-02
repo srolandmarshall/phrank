@@ -55,3 +55,19 @@ export const fetchUserReviews = (userId) => {
   .catch(error=>console.log(error))
 }
 }
+
+export const deleteReview = (review, user) => {
+  return (dispatch) => {
+    dispatch({type:"DELETING"});
+    const url = 'http://localhost:3001/api/reviews/'+review.id
+    return fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json',
+        'Authorization': user.userToken
+      }
+    }).then(response=>response.json())
+    .then(data=>dispatch({type:"DELETE_REVIEW", payload: data}))
+  }
+}

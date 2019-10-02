@@ -10,6 +10,7 @@ class ShowsContainer extends Component {
     const uid = this.props.user.userId
     if (uid !== -1) {
       this.props.fetchShows(uid)
+      this.props.fetchUserReviews(uid)
     }
     else {
       this.setState({

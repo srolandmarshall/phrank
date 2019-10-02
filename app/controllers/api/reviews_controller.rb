@@ -40,7 +40,9 @@ class API::ReviewsController < ApplicationController
 
   # DELETE /reviews/1
   def destroy
+    @user = @review.user
     @review.destroy
+    render json: @user.reviews 
   end
 
   private
