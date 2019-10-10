@@ -42,7 +42,11 @@ class API::ReviewsController < ApplicationController
   def destroy
     @user = @review.user
     @review.destroy
-    render json: @user.reviews 
+    render json: @user.reviews
+  end
+
+  def mostrecent
+    render json: Review.order('created_at DESC').limit(20)
   end
 
   private

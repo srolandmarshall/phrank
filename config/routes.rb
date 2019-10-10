@@ -13,6 +13,7 @@ namespace :api do
   end
   resources :reviews
   resources :user_shows, only: [:create, :destroy]
+  get '/mostrecent', to: 'reviews#mostrecent'
 end
 
 # resource :login, only: [:create], controller: :sessions
