@@ -39,6 +39,10 @@ class API::ShowsController < ApplicationController
     render json: @show, status: 200
   end
 
+  def tours
+    render json: Show.pluck(:tour_name).uniq, as: :tours
+  end
+
   def show_params
     params.require(:show).permit(:link, :location, :notes, :showdate, :show_id, :tour_when, :tour_id, :tour_name, :venue, :venue_id, :rating, :setlist, :songs, :sets, user_ids:[], review_ids:[])
   end

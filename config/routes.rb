@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 devise_for :users, only: [:create, :new]
 
 namespace :api do
+  get '/shows/tours', to: 'shows#tours'
+  get 'reviews/mostrecent', to: 'reviews#mostrecent'
+
   resources :shows do
     resources :reviews
     resources :users
@@ -13,7 +16,6 @@ namespace :api do
   end
   resources :reviews
   resources :user_shows, only: [:create, :destroy]
-  get '/mostrecent', to: 'reviews#mostrecent'
 end
 
 # resource :login, only: [:create], controller: :sessions

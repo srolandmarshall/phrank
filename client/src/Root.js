@@ -5,6 +5,7 @@ import { Navbar, Nav } from 'react-bootstrap'
 import App from './App'
 import MyShows from './components/myShows'
 import SignUpContainer from './containers/SignUpContainer'
+import ShowsContainer from './containers/ShowsContainer'
 import SignInContainer from './containers/SignInContainer'
 import {fetchShow, fetchShows, addUserShow, removeUserShow} from './actions/showActions'
 import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
@@ -38,7 +39,7 @@ class Root extends React.Component {
           <Route path="/sign_in" render={()=> <SignInContainer loginUser={this.props.loginUser} />}/>
           <Route path="/sign_up" render={()=> <SignUpContainer registerUser={this.props.registerUser} />}/>
           <Route path="/myshows" render={() => <MyShows createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
-          <Route path="/shows" render={() => <MyShows createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
+          <Route path="/shows" render={() => <ShowsContainer createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
         </Router>
     )
   }
