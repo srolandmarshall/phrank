@@ -26,8 +26,9 @@ class Root extends React.Component {
           <Navbar bg="dark" variant="dark" sticky="top">
             <Nav className="mr-auto">
               <Link className="topLink" to="/">Home</Link>
-              <Link className="topLink" to="/shows">My Shows</Link>
-              <Link className="topLink" to="/reviews">Reviews</Link>
+              <Link className="topLink" to="/myshows">My Shows</Link>
+              <Link className="topLink" to="/shows">Shows</Link>
+              <Link className="topLink" to="/reviews">New Reviews</Link>
               <Link className="topLink" to="/sign_in">Sign In</Link>
               <Link className="topLink" to="/sign_up">Register</Link>
 
@@ -36,6 +37,7 @@ class Root extends React.Component {
           <Route exact path="/" render={() => <App />}/>
           <Route path="/sign_in" render={()=> <SignInContainer loginUser={this.props.loginUser} />}/>
           <Route path="/sign_up" render={()=> <SignUpContainer registerUser={this.props.registerUser} />}/>
+          <Route path="/myshows" render={() => <MyShows createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
           <Route path="/shows" render={() => <MyShows createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
         </Router>
     )

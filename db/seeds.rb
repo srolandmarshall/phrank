@@ -50,7 +50,7 @@ end
 def seedReviews
   40.times do
     user_id = rand(User.first.id..User.last.id)
-    show_id = User[user_id].shows.ids.sample
+    show_id = User.find(user_id).shows.ids.sample
     Review.create(
       user_id: user_id,
       show_id: show_id,
