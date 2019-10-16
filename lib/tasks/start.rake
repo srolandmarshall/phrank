@@ -1,3 +1,3 @@
 task :start do
-  exec 'foreman start -p 3000'
+  exec 'mysql.server start && foreman start -p 3000'
 end
