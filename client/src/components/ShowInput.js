@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button, Container, Row, Col } from 'react-bootstrap'
 import DatePicker from 'react-date-picker'
 
 var dateFormat = require('dateformat');
@@ -31,11 +32,16 @@ class ShowInput extends Component {
   render() {
     return (
       <div>
-        <h3>Add show</h3>
+        <Container>
+            <Col align="center" xl={8}>
+        <h3>Find Show by Date</h3>
         <form onSubmit={(event)=>this.handleSubmit(event)}>
-          <DatePicker maxDate={new Date()} onChange={this.onChange} value={this.state.date}/>
-          <input type="submit"/>
+          <div><DatePicker maxDate={new Date()} onChange={this.onChange} value={this.state.date}/> </div>
+          <input type="submit" class="btn btn-outline-info btn-sm" value="Find Show" />
         </form>
+        </Col>
+
+        </Container>
       </div>)
   }
 

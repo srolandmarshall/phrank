@@ -46,7 +46,8 @@ class API::ReviewsController < ApplicationController
   end
 
   def mostrecent
-    render json: Review.order('created_at DESC').limit(20)
+    @reviews = Review.order('created_at DESC').limit(20)
+    render json: @reviews, :include => [:show]
   end
 
   private
