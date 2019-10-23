@@ -5,10 +5,14 @@ import { connect } from 'react-redux'
 import Show from './Show'
 import { removeUserShow } from '../actions/showActions'
 import { deleteReview } from '../actions/reviewActions'
+import ReviewsContainer from '../containers/ReviewsContainer'
 
 
 class MyShowsList extends Component {
 
+  showReviews = (reviews, show) => {
+      return reviews.filter(review => review.show_id === show.id)
+    }
 
   handleClick = (showId) => {
     const user = this.props.user
@@ -25,11 +29,16 @@ class MyShowsList extends Component {
         <div>
         <Container>
           <Row>
-            <Col sm={10} xs={9}>
+            <Col sm={10} xs={10}>
               <Show reviews={this.props.reviews} user={this.props.user} key={show.id} show={show} />
             </Col>
-            <Col sm={2} xs={3}>
+            <Col sm={2} xs={2}>
               <Button className="removeShow" key={show.id} variant="outline-danger" size="sm" onClick={()=>this.handleClick(show.id)}>Remove Show</Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={10} align={"center"}>
+              <ReviewsContainer key={show.id} user={this.props.user} show={show} reviews={this.showReviews(this.props.reviews.reviews, show)}/>
             </Col>
           </Row>
         </Container>

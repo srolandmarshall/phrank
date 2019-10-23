@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
 import parse from 'html-react-parser';
-import { removeUserShow } from '../actions/showActions'
-import { deleteReview } from '../actions/reviewActions'
 import { connect } from 'react-redux'
 
-import ReviewsContainer from '../containers/ReviewsContainer'
 
 class Show extends Component {
 
-  showReviews = (reviews, show) => {
-      return reviews.filter(review => review.show_id === show.id)
-    }
+
 
   render() {
     const {show} = this.props;
@@ -19,15 +14,9 @@ class Show extends Component {
         <h4>{show.showdate}</h4>
         <h5>{show.venue + ", " + show.location}</h5>
         <div>{parse(show.setlist)}</div>
-        <ReviewsContainer key={show.id} user={this.props.user} show={show} reviews={this.showReviews(this.props.reviews.reviews, show)}/>
       </div>)
   }
 
 }
 
-const mapDispatchToProps = dispatch => ({
-  removeUserShow: (user, show, review) => dispatch(removeUserShow(user, show, review)),
-  deleteReview: (review, user) => dispatch(deleteReview(review, user))
-})
-
-export default connect(null,mapDispatchToProps)(Show);
+export default connect(null,null)(Show);

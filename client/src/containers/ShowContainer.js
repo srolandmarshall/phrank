@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import ShowInput from '../components/ShowInput'
-import MyShowsList from '../components/myShowsList'
 import { connect } from 'react-redux'
+import Select from 'react-select'
+
+import { getTours } from '../actions/showActions'
 
 class ShowContainer extends Component {
 
@@ -13,8 +15,11 @@ class ShowContainer extends Component {
       },
       reviews: {
         reviews: []
-      }
+      },
+      tours: this.props.getTours()
+
     })
+
 
     // console.log("componentDidMount Show Container")
     // const uid = this.props.user.userId
@@ -45,8 +50,18 @@ class ShowContainer extends Component {
   }
 
   render() {
+    const listTours = this.props.shows.tours
+    const options = listTours.map(tour => {
+      return {value: tour, label: tour}
+    })
+
+
+
     return (
       <div>
+        <Select title="By Tour" options={options}>
+        </Select>
+        <h3 align={"center"}>or</h3>
         <ShowInput user={this.props.user} addUserShow={this.props.addUserShow} fetchShow={this.props.fetchShow} />
       </div>
     )
@@ -57,8 +72,13 @@ const mapStateToProps = (state, ownProps) => {
   return {
     shows: state.shows,
     user: state.users,
-    reviews: state.reviews
+    reviews: state.reviews,
+    tours: state.tours
   }
 }
 
-export default connect(mapStateToProps)(ShowContainer);
+const mapDispatchToProps = (dispatch) => ({
+  getTours: () => dispatch(getTours())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowContainer);

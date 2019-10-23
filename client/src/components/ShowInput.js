@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Container, Col } from 'react-bootstrap'
 import DatePicker from 'react-date-picker'
+import AddShowButton from './addShowButton'
 
 var dateFormat = require('dateformat');
 
@@ -37,7 +38,7 @@ class ShowInput extends Component {
         <h3>Find Show by Date</h3>
         <form onSubmit={(event)=>this.handleSubmit(event)}>
           <div><DatePicker maxDate={new Date()} onChange={this.onChange} value={this.state.date}/> </div>
-          <input type="submit" class="btn btn-outline-info btn-sm" value="Find Show" />
+            <AddShowButton />
         </form>
         </Col>
 

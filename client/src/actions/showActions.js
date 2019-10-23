@@ -11,6 +11,17 @@ export const fetchShow = (showDate, user) => {
    }
   }
 
+export const getTours = () => {
+  return (dispatch) => {
+    dispatch({type:"LOADING"});
+    const url = 'http://localhost:3001/api/shows/tours'
+    return fetch(url)
+    .then(response=>response.json())
+    .then(data=>dispatch({type:"ADD_TOURS", payload: data}))
+    .catch(error=>console.log(error))
+  }
+}
+
 export const fetchShows = (userId) => {
    return (dispatch) => {
      dispatch({type:"LOADING"});

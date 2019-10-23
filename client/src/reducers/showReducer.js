@@ -4,6 +4,7 @@ const showExists = (state, show) => {
 
 export default function showReducer(state = {
   shows: [],
+  tours: [],
   loading: false,
   saving: false,
   deleting: false
@@ -28,6 +29,8 @@ export default function showReducer(state = {
     case "DELETE_SHOW":
       const shows = state.shows.filter(show => show.id !== action.payload.id)
       return {...state, shows, deleting: false}
+    case "ADD_TOURS":
+      return {...state, tours: action.payload}
     default:
       return state;
   }

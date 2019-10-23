@@ -1,6 +1,6 @@
 class API::ShowsController < ApplicationController
 
-  before_action :authenticate_user_from_token!, except: [:show, :index]
+  before_action :authenticate_user_from_token!, except: [:show, :index, :tours]
 
   def index
     if params[:showdate]
@@ -40,7 +40,8 @@ class API::ShowsController < ApplicationController
   end
 
   def tours
-    render json: Show.pluck(:tour_name).uniq, as: :tours
+    @tours = Show.pluck(:tour_name).uniq
+    render json: @tours.reject { |c| c.blank? }, as: :tours
   end
 
   def show_params
