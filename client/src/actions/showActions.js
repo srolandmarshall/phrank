@@ -22,6 +22,18 @@ export const getTours = () => {
   }
 }
 
+export const fetchShowsByTour = (tourId) => {
+  return (dispatch) => {
+    dispatch({type:"LOADING"});
+    const url = 'http://localhost:3001/api/shows?tour_id='+tourId
+    console.log(url);
+    return fetch(url)
+      .then(response=>response.json())
+      .then(data => dispatch({type:"ADD_SHOWS", payload: data}))
+      .catch(error=>console.log(error))
+  }
+}
+
 export const fetchShows = (userId) => {
    return (dispatch) => {
      dispatch({type:"LOADING"});
@@ -65,5 +77,11 @@ export const removeUserShow = (showId, user) => {
       }
     }).then(response=>response.json())
     .then(data=>dispatch({type:"DELETE_SHOW", payload: data}))
+  }
+}
+
+export const clearShows = () => {
+  return (dispatch) => {
+    dispatch({type:"CLEAR_SHOWS"})
   }
 }

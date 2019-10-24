@@ -3,24 +3,40 @@ import ShowInput from '../components/ShowInput'
 import MyShowsList from '../components/myShowsList'
 import { connect } from 'react-redux'
 
+import { clearShows } from '../actions/showActions'
+
+
 class ShowsContainer extends Component {
 
+  constructor(props){
+    super(props)
+    this.state = {
+      shows: {
+        shows: []
+      },
+      reviews: {
+        reviews: []
+      }
+    }
+  }
+
   componentDidMount(){
+    this.props.clearShows()
     console.log("componentDidMount Show Container")
     const uid = this.props.user.userId
+    this.setState({
+      shows: {
+        shows: []
+      },
+      reviews: {
+        reviews: []
+      }
+    })
     if (uid !== -1) {
+      console.log("fetching shows");
       this.props.fetchShows(uid)
+      console.log("fetching reviews");
       this.props.fetchUserReviews(uid)
-    }
-    else {
-      this.setState({
-        shows: {
-          shows: []
-        },
-        reviews: {
-          reviews: []
-        }
-      })
     }
   }
 
@@ -38,7 +54,7 @@ class ShowsContainer extends Component {
     return (
       <div>
         <ShowInput user={this.props.user} addUserShow={this.props.addUserShow} fetchShow={this.props.fetchShow} />
-        <MyShowsList reviews={this.props.reviews} user={this.props.user} deleteShow={this.props.deleteShow} shows={this.props.shows.shows} removeUserShow={this.props.removeUserShow} />
+        <MyShowsList reviews={this.props.reviews} user={this.props.user} deleteShow={this.props.deleteShow} shows={this.props.shows} removeUserShow={this.props.removeUserShow} />
       </div>
     )
   }
@@ -52,4 +68,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(ShowsContainer);
+const mapDispatchToProps = (dispatch) => ({
+  clearShows: () => dispatch(clearShows())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(ShowsContainer);

@@ -25,7 +25,7 @@ class MyShowsList extends Component {
 
   render() {
     return(
-      this.props.shows.map(show =>
+      this.props.shows.shows.map(show =>
         <div>
         <Container>
           <Row>
@@ -52,5 +52,8 @@ const mapDispatchToProps = dispatch => ({
   removeUserShow: (user, show, review) => dispatch(removeUserShow(user, show, review)),
   deleteReview: (review, user) => dispatch(deleteReview(review, user))
 })
+
+// const mapStateToProps = (state, ownProps) => ({
+// })
 
 export default connect(null,mapDispatchToProps)(MyShowsList);

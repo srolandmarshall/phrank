@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import ShowInput from '../components/ShowInput'
 import { connect } from 'react-redux'
 import Select from 'react-select'
+import ShowsList from '../components/ShowsList'
 
-import { getTours } from '../actions/showActions'
+import { getTours, fetchShowsByTour, clearShows } from '../actions/showActions'
 
 class ShowContainer extends Component {
 
-  componentDidMount(){
-
-    this.setState({
+  constructor(props){
+    super(props)
+    this.state = {
       shows: {
         shows: []
       },
@@ -17,8 +18,13 @@ class ShowContainer extends Component {
         reviews: []
       },
       tours: this.props.getTours()
+    }
+  }
 
-    })
+
+  componentDidMount(){
+
+    this.props.clearShows()
 
 
     // console.log("componentDidMount Show Container")
@@ -40,29 +46,27 @@ class ShowContainer extends Component {
   }
 
   componentDidUpdate(prevProps){
-    const uid = this.props.user.userId
-    if (this.props.user.userId !== prevProps.user.userId){
-      console.log("fetching shows");
-      this.props.fetchShows(uid)
-      console.log("fetching reviews");
-      this.props.fetchUserReviews(uid)
-    }
+  }
+
+  handleChange = selectedOption => {
+    this.setState({selectedOption});
+    console.log('Option: ', selectedOption);
+    this.props.fetchShowsByTour(selectedOption.value)
   }
 
   render() {
-    const listTours = this.props.shows.tours
-    const options = listTours.map(tour => {
-      return {value: tour, label: tour}
+    const tours = this.props.shows.tours
+    const options = tours.map(tour => {
+      return {value: tour.id, label: tour.name}
     })
-
-
 
     return (
       <div>
-        <Select title="By Tour" options={options}>
+        <Select title="By Tour" options={options} onChange={this.handleChange}>
         </Select>
         <h3 align={"center"}>or</h3>
         <ShowInput user={this.props.user} addUserShow={this.props.addUserShow} fetchShow={this.props.fetchShow} />
+        <ShowsList shows={this.props.shows.shows}/>
       </div>
     )
   }
@@ -78,7 +82,9 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getTours: () => dispatch(getTours())
+  getTours: () => dispatch(getTours()),
+  fetchShowsByTour: (tourId) => dispatch(fetchShowsByTour(tourId)),
+  clearShows: () => dispatch(clearShows())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowContainer);

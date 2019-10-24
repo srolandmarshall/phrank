@@ -4,18 +4,22 @@ class API::ShowsController < ApplicationController
 
   def index
     if params[:showdate]
-      @shows = Show.where(showdate: params[:showdate])
+      response = Show.where(showdate: params[:showdate])
     elsif params[:venue]
-      @shows = Show.where(venue: params[:venue])
+      response = Show.where(venue: params[:venue])
+    elsif params[:tour_id]
+      @shows = Show.where(tour_id: params[:tour_id]).sort_by{|show| show.id}
+      @reviews = Show.get_reviews(@shows)
+      response = { :shows => @shows, :reviews => @reviews}
     elsif params[:show_id]
-      @shows = Show.find(params[:show_id])
+      response = Show.find(params[:show_id])
     elsif params[:user_id]
       @shows = User.find(params[:user_id]).shows
-      @shows = @shows.sort_by{|show| show.id}
+      response = @shows.sort_by{|show| show.id}
     else
-      @shows = Show.all
+      response = Show.all
     end
-    render json: @shows, status: 200
+    render json: response, status: 200
   end
 
   def show
@@ -40,8 +44,8 @@ class API::ShowsController < ApplicationController
   end
 
   def tours
-    @tours = Show.pluck(:tour_name).uniq
-    render json: @tours.reject { |c| c.blank? }, as: :tours
+    @tours = Show.all.map {|show| {id: show.tour_id, name:show.tour_name}}.uniq
+    render json: @tours, as: :tours
   end
 
   def show_params

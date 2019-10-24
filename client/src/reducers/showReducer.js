@@ -1,3 +1,5 @@
+import { LOCATION_CHANGE } from 'react-router-redux';
+
 const showExists = (state, show) => {
   return state.shows.some((s) => s.id === show.id)
 }
@@ -26,6 +28,12 @@ export default function showReducer(state = {
       else {
         return {...state, loading: false, saving: false, shows: [...state.shows, action.payload]}
       }
+    case "ADD_SHOWS":
+      const new_shows = action.payload.shows
+      const reviews = action.payload.reviews
+      return {...state, loading: false, saving: false, shows: new_shows, reviews: reviews}
+    case "CLEAR_SHOWS":
+      return {...state, shows: []}
     case "DELETE_SHOW":
       const shows = state.shows.filter(show => show.id !== action.payload.id)
       return {...state, shows, deleting: false}

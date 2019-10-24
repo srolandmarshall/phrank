@@ -27,7 +27,7 @@ class ReviewInput extends Component {
       rating: 5
     }
     event.preventDefault();
-    if (review.content != '') {
+    if (review.content !== '') {
       this.props.createReview(this.state.user, this.state.show, review)
     }
     this.resetState()

@@ -26,7 +26,7 @@ def seedShows
 end
 
 def seedUsers
-  10.times do
+  100.times do
     email = Faker::Internet.email
     User.create(
       username: email,
@@ -38,7 +38,7 @@ def seedUsers
 end
 
 def seedUserShows
-  40.times do
+  400.times do
     UserShow.create(
       user_id: rand(User.first.id..User.last.id),
       show_id: rand(Show.first.id..Show.last.id)
@@ -48,7 +48,7 @@ def seedUserShows
 end
 
 def seedReviews
-  40.times do
+  400.times do
     user_id = rand(User.first.id..User.last.id)
     show_id = User.find(user_id).shows.ids.sample
     Review.create(
@@ -61,7 +61,6 @@ def seedReviews
   puts "Reviews created: #{Review.count}"
 end
 
-seedShows
 seedUsers
 seedUserShows
 seedReviews
