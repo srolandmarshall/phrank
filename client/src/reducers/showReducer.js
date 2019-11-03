@@ -1,5 +1,3 @@
-import { LOCATION_CHANGE } from 'react-router-redux';
-
 const showExists = (state, show) => {
   return state.shows.some((s) => s.id === show.id)
 }

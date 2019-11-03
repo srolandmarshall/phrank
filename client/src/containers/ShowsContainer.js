@@ -24,14 +24,6 @@ class ShowsContainer extends Component {
     this.props.clearShows()
     console.log("componentDidMount Show Container")
     const uid = this.props.user.userId
-    this.setState({
-      shows: {
-        shows: []
-      },
-      reviews: {
-        reviews: []
-      }
-    })
     if (uid !== -1) {
       console.log("fetching shows");
       this.props.fetchShows(uid)
