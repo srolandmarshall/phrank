@@ -20,7 +20,6 @@ class ShowInput extends Component {
     event.preventDefault();
 
     // TODO: Create error if no shows
-    // TODO: Add Show Reducer Tie-in
 
     this.setState({
       date: new Date()
@@ -34,7 +33,7 @@ class ShowInput extends Component {
     return (
       <div>
         <Container>
-            <Col align="center" xl={8}>
+            <Col align="center">
         <h3>Find Show by Date</h3>
         <form onSubmit={(event)=>this.handleSubmit(event)}>
           <div><DatePicker maxDate={new Date()} onChange={this.onChange} value={this.state.date}/> </div>
