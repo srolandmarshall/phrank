@@ -9,7 +9,7 @@ An application for tracking, ranking, and listening to your phavorite Phish show
 * Find Show button to /shows
 * Show all reviews on all shows
 * Hide reviews that are not your own
-*	Fix the menu to reflect if you are logged in or not
-  *	Hide My Shows if not signed in
+* Fix the menu to reflect if you are logged in or not
+  	* 	Hide My Shows if not signed in
 	*	Hide Sign In / Register if signed in
 	*	Show Sign Out if signed in
