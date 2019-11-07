@@ -19,6 +19,8 @@ export default function reviewReducer(state = {
     case "DELETE_REVIEW":
       const reviews = action.payload
       return {...state, reviews, deleting: false}
+    case "CLEAR_REVIEWS":
+      return {...state, reviews: []}
     default:
       return state;
   }

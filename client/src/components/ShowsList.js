@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import Show from './Show'
 import { removeUserShow } from '../actions/showActions'
 import { deleteReview } from '../actions/reviewActions'
-import ReviewsContainer from '../containers/ReviewsContainer'
-
+// import ReviewsContainer from '../containers/ReviewsContainer'
+import AddShowSwitch from './addShowSwitch'
 
 class ShowsList extends Component {
 
@@ -14,8 +14,6 @@ class ShowsList extends Component {
   }
 
   componentDidUpdate(prevProps){
-    if (this.props.reviews !== prevProps.reviews){
-    }
   }
 
   showReviews = (reviews, show) => {
@@ -33,7 +31,10 @@ class ShowsList extends Component {
             </Col>
           </Row>
           <Row>
-            
+            <Col xl={8}/>
+              <Col xl={4} align="right">
+                <AddShowSwitch show={show} userShows={this.props.userShows}/>
+              </Col>
           </Row>
         </Container>
         </div>
@@ -49,8 +50,10 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    reviews: state.reviews
+    reviews: state.reviews,
+    user: state.users,
+    userShows: state.userShows
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ShowsList);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowsList);

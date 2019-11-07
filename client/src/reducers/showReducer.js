@@ -4,6 +4,7 @@ const showExists = (state, show) => {
 
 export default function showReducer(state = {
   shows: [],
+  userShows: [],
   tours: [],
   loading: false,
   saving: false,
@@ -25,6 +26,13 @@ export default function showReducer(state = {
       }
       else {
         return {...state, loading: false, saving: false, shows: [...state.shows, action.payload]}
+      }
+    case "ADD_USER_SHOW":
+      if (showExists(state, action.payload)){
+        return state
+      }
+      else {
+        return {...state, loading: false, saving: false, userShows: [...state.userShows, action.payload]}
       }
     case "ADD_SHOWS":
       const new_shows = action.payload.shows

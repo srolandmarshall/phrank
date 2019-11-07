@@ -46,6 +46,19 @@ export const fetchShows = (userId) => {
    }
   }
 
+  export const fetchUserShows = (userId) => {
+     return (dispatch) => {
+       dispatch({type:"LOADING"});
+       const url = 'http://localhost:3001/api/users/'+userId+'/shows'
+       console.log(url);
+       return fetch(url)
+         .then(response=>response.json())
+         .then(data=>data.map(show => dispatch({type:"ADD_USER_SHOW", payload: show})))
+         .catch(error=>console.log(error))
+     }
+    }
+
+
 export const addUserShow = (showId, user) => {
   return (dispatch) => {
     dispatch({type:"SAVING"});
@@ -83,5 +96,6 @@ export const removeUserShow = (showId, user) => {
 export const clearShows = () => {
   return (dispatch) => {
     dispatch({type:"CLEAR_SHOWS"})
+    dispatch({type:"CLEAR_REVIEWS"})
   }
 }
