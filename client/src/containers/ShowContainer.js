@@ -67,7 +67,7 @@ class ShowContainer extends Component {
         <h3>By Tour</h3>
         <Select title="By Tour" options={options} onChange={this.handleChange}>
         </Select>
-        <ShowsList shows={this.props.shows.shows}/>
+        <ShowsList shows={this.props.shows.shows} userShows={this.props.shows.userShows}/>
       </div>
     )
   }
@@ -78,7 +78,8 @@ const mapStateToProps = (state, ownProps) => {
     shows: state.shows,
     user: state.users,
     reviews: state.reviews,
-    tours: state.tours
+    tours: state.tours,
+    userShows: state.userShows
   }
 }
 

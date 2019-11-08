@@ -33,7 +33,7 @@ class ShowsList extends Component {
           <Row>
             <Col xl={8}/>
               <Col xl={4} align="right">
-                <AddShowSwitch show={show} userShows={this.props.userShows}/>
+                <AddShowSwitch show={show} userShows={this.props.shows.userShows}/>
               </Col>
           </Row>
         </Container>
@@ -52,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     reviews: state.reviews,
     user: state.users,
-    userShows: state.userShows
+    userShows: state.shows.userShows
   }
 }
 
