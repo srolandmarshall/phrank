@@ -97,5 +97,6 @@ export const clearShows = () => {
   return (dispatch) => {
     dispatch({type:"CLEAR_SHOWS"})
     dispatch({type:"CLEAR_REVIEWS"})
+    dispatch({type:"CLEAR_USER_SHOWS"})
   }
 }

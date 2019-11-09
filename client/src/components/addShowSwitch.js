@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
 
+import { removeUserShow, addUserShow } from '../actions/showActions'
+
 
 class addShowSwitch extends Component {
 
@@ -12,6 +14,16 @@ class addShowSwitch extends Component {
       show: this.props.show
     }
   };
+
+  handleAddSubmit(event) {
+    event.preventDefault();
+    this.props.addUserShow(this.props.show.id);
+  }
+
+  handleRemoveSubmit(event) {
+    event.preventDefault();
+    this.props.removeUserShow(this.props.show.id);
+  }
 
   render(){
     const sid = this.props.show.id
@@ -25,6 +37,7 @@ class addShowSwitch extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+  removeUserShow: (user, show, review) => dispatch(removeUserShow(user, show, review)),
 })
 
 const mapStateToProps = (state, ownProps) => {
