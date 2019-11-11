@@ -17,27 +17,38 @@ class addShowSwitch extends Component {
 
   handleAddSubmit(event) {
     event.preventDefault();
-    this.props.addUserShow(this.props.show.id);
+    console.log("Adding show..."+this.props.show.id)
+    this.props.addUserShow(this.props.show.id, this.props.user);
   }
 
   handleRemoveSubmit(event) {
     event.preventDefault();
-    this.props.removeUserShow(this.props.show.id);
+    this.props.removeUserShow(this.props.show.id, this.props.user);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.userShows !== prevProps.userShows){
+      console.log("things changed!")
+      this.setState({
+        userShows: this.props.userShows
+      })
+    }
   }
 
   render(){
     const sid = this.props.show.id
     if (this.state.userShows.find(function(e) {return e.id === sid})) {
-      return <Button variant="danger">Remove Show</Button>
+      return <Button variant="danger" onClick={this.handleRemoveSubmit.bind(this)}>Remove Show</Button>
     } else {
-      return <Button variant="outline-info">Add Show</Button>
+      return <Button variant="outline-info" onClick={this.handleAddSubmit.bind(this)}>Add Show</Button>
     }
   }
 
 }
 
 const mapDispatchToProps = dispatch => ({
-  removeUserShow: (user, show, review) => dispatch(removeUserShow(user, show, review)),
+  removeUserShow: (show, user) => dispatch(removeUserShow(show, user)),
+  addUserShow: (show, user) => dispatch(addUserShow(show, user))
 })
 
 const mapStateToProps = (state, ownProps) => {

@@ -7,7 +7,7 @@ export const fetchShow = (showDate, user) => {
      console.log(url);
      return fetch(url)
        .then(response=>response.json())
-       .then(data=>data.map(show => dispatch(addUserShow(show.id, user))))
+       .then(data=>data.map(show => dispatch(addShow(show.id, user))))
    }
   }
 
@@ -59,7 +59,7 @@ export const fetchShows = (userId) => {
     }
 
 
-export const addUserShow = (showId, user) => {
+export const addShow = (showId, user) => {
   return (dispatch) => {
     dispatch({type:"SAVING"});
     const url = 'http://localhost:3001/api/users/'+user.userId+'/shows?show_id='+showId
@@ -76,7 +76,7 @@ export const addUserShow = (showId, user) => {
   }
 }
 
-export const removeUserShow = (showId, user) => {
+export const removeShow = (showId, user) => {
   return (dispatch) => {
     dispatch({type:"DELETING"});
     const url = 'http://localhost:3001/api/users/'+user.userId+'/shows/'+showId
@@ -90,6 +90,40 @@ export const removeUserShow = (showId, user) => {
       }
     }).then(response=>response.json())
     .then(data=>dispatch({type:"DELETE_SHOW", payload: data}))
+  }
+}
+
+export const addUserShow = (showId, user) => {
+  return (dispatch) => {
+    dispatch({type:"SAVING"});
+    const url = 'http://localhost:3001/api/users/'+user.userId+'/shows?show_id='+showId
+    console.log(url);
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': user.userToken
+      }
+    }).then(response=>response.json())
+    .then(data=>dispatch({type:"ADD_USER_SHOW", payload: data}))
+  }
+}
+
+export const removeUserShow = (showId, user) => {
+  return (dispatch) => {
+    dispatch({type:"DELETING"});
+    const url = 'http://localhost:3001/api/users/'+user.userId+'/shows/'+showId
+    console.log(url);
+    return fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': user.userToken
+      }
+    }).then(response=>response.json())
+    .then(data=>dispatch({type:"DELETE_USER_SHOW", payload: data}))
   }
 }
 

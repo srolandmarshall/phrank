@@ -3,7 +3,7 @@ import { Button, Container, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import Show from './Show'
-import { removeUserShow } from '../actions/showActions'
+import { removeShow } from '../actions/showActions'
 import { deleteReview } from '../actions/reviewActions'
 import ReviewsContainer from '../containers/ReviewsContainer'
 
@@ -17,7 +17,7 @@ class MyShowsList extends Component {
   handleClick = (showId) => {
     const user = this.props.user
     const review = this.props.reviews.reviews.find(function(obj){ return obj.show_id === showId});
-    this.props.removeUserShow(showId, user)
+    this.props.removeShow(showId, user)
     if (review) {
       this.props.deleteReview(review, user)
     }
@@ -49,7 +49,7 @@ class MyShowsList extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  removeUserShow: (user, show, review) => dispatch(removeUserShow(user, show, review)),
+  removeShow: (user, show, review) => dispatch(removeShow(user, show, review)),
   deleteReview: (review, user) => dispatch(deleteReview(review, user))
 })
 

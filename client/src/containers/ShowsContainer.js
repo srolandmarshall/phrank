@@ -45,8 +45,8 @@ class ShowsContainer extends Component {
   render() {
     return (
       <div>
-        <ShowInput user={this.props.user} addUserShow={this.props.addUserShow} fetchShow={this.props.fetchShow} />
-        <MyShowsList reviews={this.props.reviews} user={this.props.user} deleteShow={this.props.deleteShow} shows={this.props.shows} removeUserShow={this.props.removeUserShow} />
+        <ShowInput user={this.props.user} addShow={this.props.addShow} fetchShow={this.props.fetchShow} />
+        <MyShowsList reviews={this.props.reviews} user={this.props.user} deleteShow={this.props.deleteShow} shows={this.props.shows} removeShow={this.props.removeShow} />
       </div>
     )
   }

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import Show from './Show'
-import { removeUserShow } from '../actions/showActions'
+import { removeShow } from '../actions/showActions'
 import { deleteReview } from '../actions/reviewActions'
 // import ReviewsContainer from '../containers/ReviewsContainer'
 import AddShowSwitch from './addShowSwitch'
@@ -44,7 +44,7 @@ class ShowsList extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  removeUserShow: (user, show, review) => dispatch(removeUserShow(user, show, review)),
+  removeShow: (user, show, review) => dispatch(removeShow(user, show, review)),
   deleteReview: (review, user) => dispatch(deleteReview(review, user))
 })
 

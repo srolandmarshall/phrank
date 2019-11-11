@@ -27,13 +27,6 @@ export default function showReducer(state = {
       else {
         return {...state, loading: false, saving: false, shows: [...state.shows, action.payload]}
       }
-    case "ADD_USER_SHOW":
-      if (showExists(state, action.payload)){
-        return state
-      }
-      else {
-        return {...state, loading: false, saving: false, userShows: [...state.userShows, action.payload]}
-      }
     case "ADD_SHOWS":
       const new_shows = action.payload.shows
       const reviews = action.payload.reviews
@@ -42,6 +35,11 @@ export default function showReducer(state = {
       return {...state, shows: []}
     case "CLEAR_USER_SHOWS":
       return {...state, userShows: []}
+    case "ADD_USER_SHOW":
+      return {...state, loading: false, saving: false, userShows: [...state.userShows, action.payload]}
+    case "DELETE_USER_SHOW":
+      const userShows = state.userShows.filter(show => show.id !== action.payload.id)
+      return {...state, userShows, deleting: false}
     case "DELETE_SHOW":
       const shows = state.shows.filter(show => show.id !== action.payload.id)
       return {...state, shows, deleting: false}

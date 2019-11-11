@@ -7,7 +7,7 @@ import MyShows from './components/myShows'
 import SignUpContainer from './containers/SignUpContainer'
 import ShowContainer from './containers/ShowContainer'
 import SignInContainer from './containers/SignInContainer'
-import {fetchShow, fetchShows, addUserShow, removeUserShow} from './actions/showActions'
+import {fetchShow, fetchShows, addShow, removeShow} from './actions/showActions'
 import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
 import {fetchUserReviews, createReview} from './actions/reviewActions'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -38,8 +38,8 @@ class Root extends React.Component {
           <Route exact path="/" render={() => <App />}/>
           <Route path="/sign_in" render={()=> <SignInContainer loginUser={this.props.loginUser} />}/>
           <Route path="/sign_up" render={()=> <SignUpContainer registerUser={this.props.registerUser} />}/>
-          <Route path="/myshows" render={() => <MyShows createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
-          <Route path="/shows" render={() => <ShowContainer createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} addUserShow={this.props.addUserShow} removeUserShow={this.props.removeUserShow}/>} />
+          <Route path="/myshows" render={() => <MyShows createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} removeShow={this.props.removeShow}/>} />
+          <Route path="/shows" render={() => <ShowContainer createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} removeShow={this.props.removeShow}/>} />
         </Router>
     )
   }
@@ -58,8 +58,8 @@ const mapDispatchToProps = dispatch => ({
   deleteShow: id => dispatch({ type: "DELETE_SHOW", id}),
   fetchShow: (showDate, user) => dispatch(fetchShow(showDate, user)),
   fetchShows: userId => dispatch(fetchShows(userId)),
-  addUserShow: (showId, userId) => dispatch(addUserShow(showId, userId)),
-  removeUserShow: (showId, user) => dispatch(removeUserShow(showId, user)),
+  addShow: (showId, userId) => dispatch(addShow(showId, userId)),
+  removeShow: (showId, user) => dispatch(removeShow(showId, user)),
   registerUser: (email, password) => dispatch(registerUser(email, password)),
   loginUser: (email, password) => dispatch(loginUser(email, password)),
   getCurrentUser: () => dispatch(getCurrentUser()),
