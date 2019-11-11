@@ -5,7 +5,7 @@ An application for tracking, ranking, and listening to your phavorite Phish show
 
 ### Current To Do list
 
-* Add Show button to shows on /shows
+~~* Add Show button to shows on /shows~~
 * Find Show button to /shows
 * Show all reviews on all shows
 * Hide reviews that are not your own

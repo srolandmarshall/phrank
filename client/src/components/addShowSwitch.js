@@ -28,7 +28,6 @@ class addShowSwitch extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.userShows !== prevProps.userShows){
-      console.log("things changed!")
       this.setState({
         userShows: this.props.userShows
       })
