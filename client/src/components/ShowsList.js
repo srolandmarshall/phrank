@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Show from './Show'
 import { removeShow } from '../actions/showActions'
 import { deleteReview } from '../actions/reviewActions'
-// import ReviewsContainer from '../containers/ReviewsContainer'
+import ReviewsContainer from '../containers/ReviewsContainer'
 import AddShowSwitch from './addShowSwitch'
 
 class ShowsList extends Component {
@@ -14,6 +14,9 @@ class ShowsList extends Component {
   }
 
   componentDidUpdate(prevProps){
+    if (prevProps.shows !== this.props.shows){
+
+    }
   }
 
   showReviews = (reviews, show) => {
@@ -31,10 +34,12 @@ class ShowsList extends Component {
             </Col>
           </Row>
           <Row>
-            <Col xl={8}/>
-              <Col xl={4} align="right">
-                <AddShowSwitch show={show} userShows={this.props.shows.userShows}/>
-              </Col>
+            <Col xl={8}>
+              <ReviewsContainer reviews={this.props.reviews.reviews} show={show}/>
+            </Col>
+            <Col xl={4} align="right">
+              <AddShowSwitch show={show} userShows={this.props.shows.userShows}/>
+            </Col>
           </Row>
         </Container>
         </div>

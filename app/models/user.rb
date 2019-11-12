@@ -13,10 +13,19 @@ class User < ApplicationRecord
   has_many :shows, :through => :user_shows
   has_many :reviews
 
+  def cleaned
+    return {
+      "id": self.id,
+      "username": self.username,
+      "email": self.email
+    }
+  end
+
   private
 
   def update_access_token!
     self.access_token = "#{self.id}:#{Devise.friendly_token}"
     save
   end
+
 end

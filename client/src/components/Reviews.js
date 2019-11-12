@@ -6,7 +6,8 @@ class Reviews extends Component {
 
   render() {
     return(
-      this.props.reviews.map(review => <Review user={this.props.user} key={review.id} show={this.props.show} review={review} />)
+      this.props.reviews.map(review =>
+        <Review key={review.id} show={this.props.show} review={review} />)
     );
   }
 }

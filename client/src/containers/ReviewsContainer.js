@@ -15,7 +15,7 @@ class ReviewsContainer extends Component {
     if (reviews.length > 0){
       return <div>
         <h5>Reviews:</h5>
-        <Reviews reviews={reviews} show={this.props.show} user={this.props.user} />
+        <Reviews reviews={reviews} show={this.props.show} />
       </div>
     }
     else {

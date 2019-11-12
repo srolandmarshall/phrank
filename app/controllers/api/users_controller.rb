@@ -1,5 +1,6 @@
 class API::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authenticate_user_from_token!, except: [:show]
 
   # GET /users
   def index
@@ -13,7 +14,7 @@ class API::UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user
+    render json: @user.cleaned
   end
 
   # POST /users

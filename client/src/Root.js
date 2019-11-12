@@ -7,7 +7,7 @@ import MyShows from './components/myShows'
 import SignUpContainer from './containers/SignUpContainer'
 import ShowContainer from './containers/ShowContainer'
 import SignInContainer from './containers/SignInContainer'
-import {fetchShow, fetchShows, addShow, removeShow} from './actions/showActions'
+import {fetchShow, fetchShows, removeShow} from './actions/showActions'
 import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
 import {fetchUserReviews, createReview} from './actions/reviewActions'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -58,7 +58,6 @@ const mapDispatchToProps = dispatch => ({
   deleteShow: id => dispatch({ type: "DELETE_SHOW", id}),
   fetchShow: (showDate, user) => dispatch(fetchShow(showDate, user)),
   fetchShows: userId => dispatch(fetchShows(userId)),
-  addShow: (showId, userId) => dispatch(addShow(showId, userId)),
   removeShow: (showId, user) => dispatch(removeShow(showId, user)),
   registerUser: (email, password) => dispatch(registerUser(email, password)),
   loginUser: (email, password) => dispatch(loginUser(email, password)),
