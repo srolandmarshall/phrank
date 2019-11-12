@@ -15,9 +15,6 @@ class ShowContainer extends Component {
         shows: [],
         userShows: []
       },
-      reviews: {
-        reviews: []
-      },
       tours: this.props.getTours()
     }
   }
@@ -31,6 +28,9 @@ class ShowContainer extends Component {
   componentDidUpdate(prevProps){
     if (this.props.user.userId !== prevProps.user.userId){
       this.props.fetchUserShows(this.props.user.userId)
+    }
+    if (this.props.reviews !== prevProps.reviews){
+      console.log("reviews changed!")
     }
   }
 
@@ -51,7 +51,7 @@ class ShowContainer extends Component {
         <h3>By Tour</h3>
         <Select title="By Tour" options={options} onChange={this.handleChange}>
         </Select>
-        <ShowsList shows={this.props.shows.shows} userShows={this.props.shows.userShows}/>
+        <ShowsList shows={this.props.shows.shows} userShows={this.props.shows.userShows} reviews={this.props.reviews}/>
       </div>
     )
   }
@@ -61,7 +61,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     shows: state.shows,
     user: state.users,
-    reviews: state.reviews,
+    reviews: state.shows.reviews,
     tours: state.tours,
     userShows: state.userShows
   }

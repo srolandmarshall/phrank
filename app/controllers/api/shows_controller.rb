@@ -10,9 +10,10 @@ class API::ShowsController < ApplicationController
     elsif params[:tour_id]
       @shows = Show.where(tour_id: params[:tour_id]).sort_by{|show| show.id}
       @reviews = Show.get_reviews(@shows)
-      response = { :shows => @shows, :reviews => @reviews}
+      response = { :shows => @shows, :reviews => @reviews.flatten}
     elsif params[:show_id]
-      response = Show.find(params[:show_id])
+      @show = Show.find(params[:show_id])
+      response = @show
     elsif params[:user_id]
       @shows = User.find(params[:user_id]).shows
       response = @shows.sort_by{|show| show.id}
@@ -24,7 +25,9 @@ class API::ShowsController < ApplicationController
 
   def show
     @show = Show.find(params[:id])
-    render json: @show, status: 200
+    @reviews = @show.reviews
+    response = { :show => @show, :reviews => @reviews}
+    render json: response, status: 200
   end
 
   def create

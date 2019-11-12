@@ -35,7 +35,7 @@ class ShowsList extends Component {
           </Row>
           <Row>
             <Col xl={8}>
-              <ReviewsContainer reviews={this.props.reviews.reviews} show={show}/>
+              <ReviewsContainer reviews={this.props.reviews} show={show}/>
             </Col>
             <Col xl={4} align="right">
               <AddShowSwitch show={show} userShows={this.props.shows.userShows}/>
@@ -55,7 +55,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    reviews: state.reviews,
     user: state.users,
     userShows: state.shows.userShows
   }
