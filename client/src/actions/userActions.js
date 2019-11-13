@@ -64,20 +64,3 @@ export const getCurrentUser = () => {
       .catch(error=>console.log(error))
   }
 }
-
-export const getUser = (id) => {
-  return (dispatch) => {
-    dispatch({type:"LOADING"});
-    return fetch('http://localhost:3001/api/users/'+id, {
-      method: 'GET',
-      headers: {
-        'Accept': "application/json",
-        'Content-Type': 'application/json'
-        },
-      credentials: 'include'
-      })
-      .then(response=>response.json())
-      .then(user=>dispatch({type:"SET_REVIEW_USER", payload: user}))
-        .catch(error=>console.log(error))
-  }
-}

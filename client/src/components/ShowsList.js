@@ -19,10 +19,6 @@ class ShowsList extends Component {
     }
   }
 
-  showReviews = (reviews, show) => {
-      return reviews.filter(review => review.show_id === show.id)
-    }
-
   render() {
     return(
       this.props.shows.map(show =>

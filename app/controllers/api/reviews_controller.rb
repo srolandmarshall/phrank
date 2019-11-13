@@ -11,7 +11,7 @@ class API::ReviewsController < ApplicationController
     else
       @reviews = Review.all
     end
-    render json: @reviews
+    render json: @reviews, :include => :user
   end
 
   # GET /reviews/1

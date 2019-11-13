@@ -11,7 +11,9 @@ has_many :users, :through => :user_shows
     reviews = shows.map {|show|
       show.reviews if !show.reviews.empty?
     }
-    reviews.reject{ |r| r.nil? }
+    reviews.reject{ |r| r.nil? }.as_json(include: {
+      user: {  only: [:id, :username, :email]}
+    })
   end
 
 end

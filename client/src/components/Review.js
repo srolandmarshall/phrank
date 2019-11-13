@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { deleteReview } from '../actions/reviewActions'
-import { getUser } from '../actions/userActions'
 
 class Review extends Component {
 
   componentDidMount(){
-    this.props.getUser(this.props.review.user_id)
   }
 
   componentDidUpdate(prevProps){
@@ -19,22 +17,29 @@ class Review extends Component {
   }
 
   render(){
-    const {review, user} = this.props;
-    return <div>
-    <h6>{user.email} wrote:</h6>
-    <p>{review.content}</p>
-    <Button variant="outline-danger" size="sm" onClick={this.handleClick.bind(this)}>Remove Review</Button>
-    </div>
+    const {review, user, reviewUser} = this.props;
+    if (review.user_id === user.userId) {
+      return <div>
+      <h6>You wrote:</h6>
+      <p>{review.content}</p>
+      <Button variant="outline-danger" size="sm" onClick={this.handleClick.bind(this)}>Remove Review</Button>
+      </div>
+    }
+    else{
+      return <div>
+      <h6>{reviewUser.email} wrote:</h6>
+      <p>{review.content}</p>
+      </div>
+    }
   }
 }
 
 const mapStateToProps = (state) => ({
-  user: state.users.reviewUser
+  user: state.users
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteReview: (review, user) => dispatch(deleteReview(review, user)),
-  getUser: (userId) => dispatch(getUser(userId))
+  deleteReview: (review, user) => dispatch(deleteReview(review, user))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Review)

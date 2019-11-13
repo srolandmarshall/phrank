@@ -5,7 +5,12 @@ import ReviewInput from '../components/ReviewInput'
 
 
 const showReviews = (reviews, show) => {
-  return reviews.filter(review => review.show_id === show.id)
+  if (reviews) {
+    return reviews.filter(review => review.show_id === show.id)
+  }
+  else {
+    return []
+  }
 }
 
 class ReviewsContainer extends Component {
