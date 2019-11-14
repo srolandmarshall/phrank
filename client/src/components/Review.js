@@ -21,13 +21,11 @@ class Review extends Component {
     if (review.user_id === user.userId) {
       return <Container>
         <Row>
-          <Col>
-            <h6>You wrote:</h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={10}><p>{review.content}</p></Col>
-          <Col md={2} align="right"><Button variant="outline-danger" size="sm" onClick={this.handleClick.bind(this)}>Remove Review</Button></Col>
+          <Col xl={6} xs md={10}>
+          <h6>You wrote:</h6>
+          <p>{review.content}</p>
+        </Col>
+        <Col xl={6} xs md={2} align="right"><Button variant="outline-danger" size="sm" onClick={this.handleClick.bind(this)}>Remove Review</Button></Col>
         </Row>
       </Container>
     }

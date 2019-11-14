@@ -37,9 +37,7 @@ class MyShowsList extends Component {
             </Col>
           </Row>
           <Row>
-            <Col xs lg={8} align="center">
-              <ReviewsContainer key={show.id} user={this.props.user} show={show} reviews={this.showReviews(this.props.reviews.reviews, show)}/>
-            </Col>
+            <ReviewsContainer key={show.id} user={this.props.user} show={show} reviews={this.showReviews(this.props.reviews.reviews, show)}/>
           </Row>
         </Container>
         </div>
