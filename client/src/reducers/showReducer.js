@@ -20,6 +20,8 @@ export default function showReducer(state = {
     case "DELETING":
       console.log("Removing from DB...");
       return {...state, deleting: true};
+    case "USE_SHOWS":
+      return {...state, loading: false, saving: false, shows: action.payload}
     case "ADD_SHOW":
       if (showExists(state, action.payload)){
         return state
@@ -36,6 +38,8 @@ export default function showReducer(state = {
       return {...state, userShows: []}
     case "ADD_USER_SHOW":
       return {...state, loading: false, saving: false, userShows: [...state.userShows, action.payload]}
+    case "USE_USER_SHOWS":
+      return {...state, loading: false, saving: false, userShows: action.payload}
     case "DELETE_USER_SHOW":
       const userShows = state.userShows.filter(show => show.id !== action.payload.id)
       return {...state, userShows, deleting: false}

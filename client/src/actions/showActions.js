@@ -44,7 +44,7 @@ export const fetchShows = (userId) => {
      console.log(url);
      return fetch(url)
        .then(response=>response.json())
-       .then(data=>data.map(show => dispatch({type:"ADD_SHOW", payload: show})))
+       .then(data=>dispatch({type:"USE_SHOWS", payload: data}))
        .catch(error=>console.log(error))
    }
   }
@@ -56,7 +56,7 @@ export const fetchShows = (userId) => {
        console.log(url);
        return fetch(url)
          .then(response=>response.json())
-         .then(data=>data.map(show => dispatch({type:"ADD_USER_SHOW", payload: show})))
+         .then(data=>dispatch({type:"USE_USER_SHOWS", payload: data}))
          .catch(error=>console.log(error))
      }
     }
