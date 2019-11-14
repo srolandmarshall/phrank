@@ -67,7 +67,7 @@ export const fetchUserReviews = (userId) => {
       },
       credentials: 'include'
   }).then(response=>response.json())
-  .then(data=>data.map(review => dispatch({type:"ADD_REVIEW", payload: review})))
+  .then(data=>dispatch({type:"USE_REVIEWS", payload: data}))
   .catch(error=>console.log(error))
 }
 }
