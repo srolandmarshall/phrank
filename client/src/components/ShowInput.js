@@ -32,18 +32,17 @@ class ShowInput extends Component {
 
   render() {
     return (
-      <div>
         <Container>
-            <Col align="center" xl={8}>
-        <h3>Find Show by Date</h3>
-        <form onSubmit={(event)=>this.handleSubmit(event)}>
-          <div><DatePicker maxDate={new Date()} onChange={this.onChange} value={this.state.date}/> </div>
-            <AddShowButton />
-        </form>
-        </Col>
-
-        </Container>
-      </div>)
+            <Col align="center">
+              <h3>Find Show by Date</h3>
+              <form onSubmit={(event)=>this.handleSubmit(event)}>
+                <div>
+                  <DatePicker maxDate={new Date()} onChange={this.onChange} value={this.state.date}/>
+                </div>
+                  <AddShowButton />
+              </form>
+            </Col>
+        </Container>)
   }
 
 }

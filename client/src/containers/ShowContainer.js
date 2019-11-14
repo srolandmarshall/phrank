@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 // import ShowInput from '../components/ShowInput'
+import { Container } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Select from 'react-select'
 import ShowsList from '../components/ShowsList'
@@ -47,12 +48,12 @@ class ShowContainer extends Component {
     })
 
     return (
-      <div>
+      <Container>
         <h3>By Tour</h3>
         <Select title="By Tour" options={options} onChange={this.handleChange}>
         </Select>
         <ShowsList shows={this.props.shows.shows} userShows={this.props.shows.userShows} reviews={this.props.reviews}/>
-      </div>
+      </Container>
     )
   }
 }

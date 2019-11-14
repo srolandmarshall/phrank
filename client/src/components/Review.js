@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
+import { Container, Button, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { deleteReview } from '../actions/reviewActions'
 
@@ -19,17 +19,29 @@ class Review extends Component {
   render(){
     const {review, user, reviewUser} = this.props;
     if (review.user_id === user.userId) {
-      return <div>
-      <h6>You wrote:</h6>
-      <p>{review.content}</p>
-      <Button variant="outline-danger" size="sm" onClick={this.handleClick.bind(this)}>Remove Review</Button>
-      </div>
+      return <Container>
+        <Row>
+          <Col>
+            <h6>You wrote:</h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={10}><p>{review.content}</p></Col>
+          <Col md={2} align="right"><Button variant="outline-danger" size="sm" onClick={this.handleClick.bind(this)}>Remove Review</Button></Col>
+        </Row>
+      </Container>
     }
     else{
-      return <div>
-      <h6>{reviewUser.email} wrote:</h6>
-      <p>{review.content}</p>
-      </div>
+      return <Container>
+        <Row>
+          <Col>
+          <h6>{reviewUser.email} wrote:</h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={"auto"}><p>{review.content}</p></Col>
+        </Row>
+      </Container>
     }
   }
 }
