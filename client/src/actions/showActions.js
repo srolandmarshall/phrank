@@ -29,7 +29,10 @@ export const fetchShowsByTour = (tourId) => {
     console.log(url);
     return fetch(url)
       .then(response=>response.json())
-      .then(data => dispatch({type:"ADD_SHOWS", payload: data}))
+      .then(
+        data => dispatch({type:"ADD_SHOWS", payload: data.shows})
+          .then(dispatch({type:"USE_REVIEWS", payload: data.reviews}))
+      )
       .catch(error=>console.log(error))
   }
 }

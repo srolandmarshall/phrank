@@ -8,18 +8,6 @@ import { clearShows } from '../actions/showActions'
 
 class ShowsContainer extends Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-      shows: {
-        shows: []
-      },
-      reviews: {
-        reviews: []
-      }
-    }
-  }
-
   componentDidMount(){
     this.props.clearShows()
     console.log("componentDidMount Show Container")

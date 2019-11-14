@@ -31,7 +31,7 @@ class ShowsList extends Component {
           </Row>
           <Row>
             <Col xl={8}>
-              <ReviewsContainer reviews={this.props.reviews} show={show}/>
+              <ReviewsContainer show={show}/>
             </Col>
             <Col xl={4} align="right">
               <AddShowSwitch show={show} userShows={this.props.shows.userShows}/>

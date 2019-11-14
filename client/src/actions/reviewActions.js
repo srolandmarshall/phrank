@@ -39,6 +39,22 @@ export const createReview = (user, show, review) => {
   }
 }
 
+export const fetchReviews = (url) => {
+  return (dispatch) => {
+    dispatch({type:"LOADING"});
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include'
+  }).then(response=>response.json())
+  .then(data=>dispatch({type:"USE_REVIEWS", payload:data}))
+  .catch(error=>console.log(error))
+  }
+}
+
 export const fetchUserReviews = (userId) => {
   return (dispatch) => {
     dispatch({type:"LOADING"});

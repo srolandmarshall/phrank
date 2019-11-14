@@ -62,7 +62,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     shows: state.shows,
     user: state.users,
-    reviews: state.shows.reviews,
+    reviews: state.reviews,
     tours: state.tours,
     userShows: state.userShows
   }

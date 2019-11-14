@@ -16,6 +16,8 @@ export default function reviewReducer(state = {
       return {...state, deleting: true};
     case "ADD_REVIEW":
       return {...state, loading: false, saving: false, reviews: [...state.reviews, action.payload]}
+    case "USE_REVIEWS":
+      return {...state, loading: false, saving: false, reviews: action.payload}
     case "DELETE_REVIEW":
       const reviews = action.payload
       return {...state, reviews, deleting: false}

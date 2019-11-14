@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Col, Row } from 'react-bootstrap'
+import { Container, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Reviews from '../components/Reviews'
 import ReviewInput from '../components/ReviewInput'
@@ -58,7 +58,8 @@ class ReviewsContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     shows: state.shows,
-    user: state.users
+    user: state.users,
+    reviews: state.reviews.reviews
   }
 }
 
