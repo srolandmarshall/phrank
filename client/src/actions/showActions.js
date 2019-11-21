@@ -130,6 +130,18 @@ export const removeUserShow = (showId, user) => {
   }
 }
 
+export const fetchNewestShows = () => {
+   return (dispatch) => {
+     dispatch({type:"LOADING"});
+     const url = 'http://localhost:3001/api/shows/mostrecent'
+     console.log(url);
+     return fetch(url)
+       .then(response=>response.json())
+       .then(data=>dispatch({type:"USE_SHOWS", payload: data}))
+       .catch(error=>console.log(error))
+   }
+  }
+
 export const clearShows = () => {
   return (dispatch) => {
     dispatch({type:"CLEAR_SHOWS"})

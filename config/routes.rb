@@ -5,6 +5,8 @@ devise_for :users, only: [:create, :new]
 namespace :api do
   get '/shows/tours', to: 'shows#tours'
   get 'reviews/mostrecent', to: 'reviews#mostrecent'
+  get 'shows/mostrecent', to: 'shows#mostrecent'
+
 
   resources :shows do
     resources :reviews

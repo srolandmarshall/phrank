@@ -16,4 +16,13 @@ has_many :users, :through => :user_shows
     })
   end
 
+  def self.mostrecent
+    reviews = Review.mostrecent
+    shows = []
+    reviews.each do |review|
+      shows << Show.find(review.show_id)
+    end
+    return shows
+  end
+
 end

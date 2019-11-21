@@ -66,10 +66,10 @@ export const fetchUserReviews = (userId) => {
         'Content-Type': 'application/json',
       },
       credentials: 'include'
-  }).then(response=>response.json())
-  .then(data=>dispatch({type:"USE_REVIEWS", payload: data}))
-  .catch(error=>console.log(error))
-}
+    }).then(response=>response.json())
+      .then(data=>dispatch({type:"USE_REVIEWS", payload: data}))
+      .catch(error=>console.log(error))
+  }
 }
 
 export const deleteReview = (review, user) => {
@@ -80,10 +80,21 @@ export const deleteReview = (review, user) => {
       method: 'DELETE',
       headers: {
         'Accept': "application/json",
-        'Content-Type': 'application/json',
         'Authorization': user.userToken
       }
-    }).then(response=>response.json())
-    .then(data=>dispatch({type:"DELETE_REVIEW", payload: data}))
+    }).then(response=>response)
+    .then(data=>dispatch({type:"DELETE_REVIEW", payload: review.id}))
   }
 }
+
+export const fetchNewestReviews = () => {
+   return (dispatch) => {
+     dispatch({type:"LOADING"});
+     const url = 'http://localhost:3001/api/reviews/mostrecent'
+     console.log(url);
+     return fetch(url)
+       .then(response=>response.json())
+       .then(data=>dispatch({type:"USE_REVIEWS", payload: data}))
+       .catch(error=>console.log(error))
+   }
+  }

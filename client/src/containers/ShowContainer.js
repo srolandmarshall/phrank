@@ -12,10 +12,6 @@ class ShowContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
-      shows: {
-        shows: [],
-        userShows: []
-      },
       tours: this.props.getTours()
     }
   }

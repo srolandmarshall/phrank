@@ -5,4 +5,9 @@ class Review < ApplicationRecord
   def user
     User.find(self.user_id)
   end
+
+  def self.mostrecent
+    self.order('created_at DESC').limit(20)
+  end
+
 end

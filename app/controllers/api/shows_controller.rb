@@ -1,6 +1,6 @@
 class API::ShowsController < ApplicationController
 
-  before_action :authenticate_user_from_token!, except: [:show, :index, :tours]
+  before_action :authenticate_user_from_token!, except: [:show, :index, :tours, :mostrecent]
 
   def index
     if params[:showdate]
@@ -21,6 +21,11 @@ class API::ShowsController < ApplicationController
       response = Show.all
     end
     render json: response, status: 200
+  end
+
+  def mostrecent
+    @shows = Show.mostrecent
+    render json: @shows, status: 200
   end
 
   def show

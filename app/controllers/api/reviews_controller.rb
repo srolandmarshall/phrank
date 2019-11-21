@@ -1,6 +1,6 @@
 class API::ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :update, :destroy]
-  before_action :authenticate_user_from_token!, except: [:show, :index]
+  before_action :authenticate_user_from_token!, except: [:show, :index, :mostrecent]
 
   # GET /reviews
   def index
@@ -42,11 +42,11 @@ class API::ReviewsController < ApplicationController
   def destroy
     @user = @review.user
     @review.destroy
-    render json: @user.reviews
+    render :status => 200
   end
 
   def mostrecent
-    @reviews = Review.order('created_at DESC').limit(20)
+    @reviews = Review.mostrecent
     render json: @reviews, :include => [:show]
   end
 
