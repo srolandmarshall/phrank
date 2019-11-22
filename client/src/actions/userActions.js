@@ -47,6 +47,24 @@ export const loginUser = (email, password) => {
   }
 }
 
+export const fetchUserData = (id) => {
+  return (dispatch) => {
+    dispatch({type:"LOADING"});
+    const url = 'http://localhost:3001/api/users/'+id
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json'
+        },
+      credentials: 'include'
+      })
+    .then(response=>response.json())
+    .then(data=>dispatch({type:"SET_USER_PROFILE", payload: data}))
+      .catch(error=>console.log(error))
+  }
+}
+
 export const getCurrentUser = () => {
   return (dispatch) => {
     dispatch({type:"LOADING"});

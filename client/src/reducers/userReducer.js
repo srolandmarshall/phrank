@@ -1,6 +1,7 @@
 export default function userReducer(state = {
   userToken: "",
   userId: -1,
+  profileUser: {},
   reviewUser: {},
   loading: false,
   saving: false,
@@ -20,9 +21,13 @@ export default function userReducer(state = {
       console.log("Setting user...");
       state = {...state, userToken: action.payload.access_token, userId: action.payload.user_id, email: action.payload.email}
       return state;
+    case "SET_USER_PROFILE":
+      console.log("Setting user for view...");
+      state = {...state, profileUser: action.payload}
+      return state;
     case "SET_REVIEW_USER":
       console.log("Setting reviewUser to "+ action.payload.id);
-      return {...state, users: {reviewUser: action.payload}}
+      return {...state, reviewUser: action.payload}
     default:
       return state;
   }

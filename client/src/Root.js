@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './App'
 import MyShows from './components/myShows'
+import User from './components/User'
 import SignUpContainer from './containers/SignUpContainer'
 import ShowContainer from './containers/ShowContainer'
 import SignInContainer from './containers/SignInContainer'
@@ -28,6 +29,7 @@ class Root extends React.Component {
         <Router>
           <NavBar />
           <Route exact path="/" render={() => <App />}/>
+          <Route path="/users/:id" component={User} />
           <Route path="/sign_in" render={()=> <SignInContainer loginUser={this.props.loginUser} />}/>
           <Route path="/sign_up" render={()=> <SignUpContainer registerUser={this.props.registerUser} />}/>
           <Route path="/myshows" render={() => <MyShows createReview={this.props.createReview} fetchUserReviews={this.props.fetchUserReviews} getCurrentUser={this.props.getCurrentUser} user={this.props.user} shows={this.props.shows} addShow={this.props.addShow} deleteShow={this.props.deleteShow} fetchShow={this.props.fetchShow} fetchShows={this.props.fetchShows} removeShow={this.props.removeShow}/>} />

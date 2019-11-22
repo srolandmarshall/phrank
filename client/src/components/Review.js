@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Button, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { deleteReview } from '../actions/reviewActions'
@@ -35,7 +36,7 @@ class Review extends Component {
       return <Container>
         <Row>
           <Col>
-            <h6>{reviewUser.email} wrote:</h6>
+            <h6><Link to={{pathname: `/users/${reviewUser.id}`}}>{reviewUser.email}</Link> wrote:</h6>
           </Col>
         </Row>
         <Row>
