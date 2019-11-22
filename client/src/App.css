@@ -36,6 +36,11 @@ a.topLink:hover {
   margin-left: 20px;
 }
 
+p.date {
+  font-size: 7pt;
+  padding: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

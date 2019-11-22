@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Button, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { deleteReview } from '../actions/reviewActions'
+import ReviewDate from './ReviewDate'
 
 class Review extends Component {
 
@@ -24,6 +25,7 @@ class Review extends Component {
           <Col xl={6} xs md={10}>
           <h6>You wrote:</h6>
           <p>{review.content}</p>
+          <ReviewDate date={review.created_at}/>
         </Col>
         <Col xl={6} xs md={2} align="right"><Button variant="outline-danger" size="sm" onClick={this.handleClick.bind(this)}>Remove Review</Button></Col>
         </Row>
@@ -33,11 +35,13 @@ class Review extends Component {
       return <Container>
         <Row>
           <Col>
-          <h6>{reviewUser.email} wrote:</h6>
+            <h6>{reviewUser.email} wrote:</h6>
           </Col>
         </Row>
         <Row>
-          <Col md={"auto"}><p>{review.content}</p></Col>
+          <Col md={"auto"}><p>{review.content}</p>
+            <ReviewDate date={review.created_at}/>
+          </Col>
         </Row>
       </Container>
     }
