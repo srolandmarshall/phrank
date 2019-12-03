@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 class NavBar extends React.Component {
 
   render(){
-    if (this.props.user.userId === -1) {
+
+    if (this.props.current_user.userId < 0) {
       return (<Navbar bg="dark" variant="dark" sticky="top">
         <Nav className="mr-auto">
           <Link className="topLink" to="/">Home</Link>
@@ -33,7 +34,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: state.users
+    current_user: state.users
   }
 }
 

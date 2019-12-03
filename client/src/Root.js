@@ -15,8 +15,6 @@ import NavBar from './components/NavBar'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
-getCurrentUser()
-
 class Root extends React.Component {
 
   constructor(props){
