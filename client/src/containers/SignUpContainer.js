@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
+
+import { registerUser } from '../actions/userActions'
 
 
 class SignUpContainer extends Component {
@@ -90,4 +93,9 @@ class SignUpContainer extends Component {
   }
 }
 
-export default withRouter(SignUpContainer)
+const mapDispatchToProps = dispatch => ({
+  registerUser: (email, password) => dispatch(registerUser(email, password))
+})
+
+
+export default connect(null,mapDispatchToProps)(withRouter(SignUpContainer))

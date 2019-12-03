@@ -7,14 +7,6 @@ import { removeUserShow, addUserShow } from '../actions/showActions'
 
 class addShowSwitch extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      userShows: this.props.userShows,
-      show: this.props.show
-    }
-  };
-
   handleAddSubmit(event) {
     event.preventDefault();
     console.log("Adding show..."+this.props.show.id)

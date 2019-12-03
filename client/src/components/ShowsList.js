@@ -10,15 +10,6 @@ import AddShowSwitch from './addShowSwitch'
 
 class ShowsList extends Component {
 
-  componentDidMount(){
-  }
-
-  componentDidUpdate(prevProps){
-    if (prevProps.shows !== this.props.shows){
-
-    }
-  }
-
   render() {
     return(
       this.props.shows.map(show =>
@@ -26,7 +17,7 @@ class ShowsList extends Component {
         <Container>
           <Row>
             <Col>
-              <Show reviews={this.props.reviews} user={this.props.user} key={show.id} show={show} />
+              <Show key={show.id} show={show} />
             </Col>
           </Row>
           <Row>
@@ -34,7 +25,7 @@ class ShowsList extends Component {
               <ReviewsContainer show={show}/>
             </Col>
             <Col xl={4} align="right">
-              <AddShowSwitch show={show} userShows={this.props.shows.userShows}/>
+              <AddShowSwitch show={show} />
             </Col>
           </Row>
         </Container>
@@ -52,7 +43,9 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.users,
-    userShows: state.shows.userShows
+    userShows: state.shows.userShows,
+    shows: state.shows.shows,
+    reviews: state.reviews
   }
 }
 

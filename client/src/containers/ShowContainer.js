@@ -48,7 +48,7 @@ class ShowContainer extends Component {
         <h3>By Tour</h3>
         <Select title="By Tour" options={options} onChange={this.handleChange}>
         </Select>
-        <ShowsList shows={this.props.shows.shows} userShows={this.props.shows.userShows} reviews={this.props.reviews}/>
+        <ShowsList />
       </Container>
     )
   }
