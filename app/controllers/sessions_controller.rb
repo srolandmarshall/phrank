@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
     @user = User.find_for_database_authentication(email: params[:username])
     session[:user_id] = nil
     sign_out :user
+    render status: 200, message: "Logged out"
   end
 
   def currentuser

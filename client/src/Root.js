@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './App'
 import MyShows from './components/myShows'
+import LogOut from './components/LogOut'
 import User from './components/User'
 import SignUpContainer from './containers/SignUpContainer'
 import ShowContainer from './containers/ShowContainer'
@@ -30,6 +31,7 @@ class Root extends React.Component {
           <Route path="/sign_up" render={()=> <SignUpContainer />}/>
           <Route path="/myshows" render={() => <MyShows />}/>
           <Route path="/newest" render={() => <Newest />}/>
+          <Route path="/logout" render={() => <LogOut />} />
           <Route path="/shows" render={() => <ShowContainer />} />
         </Router>
     )
