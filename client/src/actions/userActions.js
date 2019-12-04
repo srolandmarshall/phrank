@@ -47,6 +47,26 @@ export const loginUser = (email, password) => {
   }
 }
 
+export const logOut = (email) => {
+  return (dispatch) => {
+    dispatch({type: "DELETING"});
+    const url = 'http://localhost:3001/logout'
+    const formData = JSON.stringify(
+      { email: email }
+    );
+    return fetch(url, {
+      method: 'DELETE',
+      body: formData,
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(data=>dispatch({type:"LOG_OUT_USER"}))
+    .catch(error=>console.log(error))
+  }
+}
+
 export const fetchUserData = (id) => {
   return (dispatch) => {
     dispatch({type:"LOADING"});

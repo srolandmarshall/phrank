@@ -24,6 +24,16 @@ export default function userReducer(state = {
           state = {...state, userToken: action.payload.access_token, userId: action.payload.user_id, email: action.payload.email}
         }
       return state;
+    case "LOG_OUT_USER":
+      return state = {...state,
+        userToken: "",
+        userId: -1,
+        profileUser: {},
+        reviewUser: {},
+        loading: false,
+        saving: false,
+        deleting: false
+      }
     case "SET_USER_PROFILE":
       console.log("Setting user for view...");
       state = {...state, profileUser: action.payload}
