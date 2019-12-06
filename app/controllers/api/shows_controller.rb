@@ -8,7 +8,7 @@ class API::ShowsController < ApplicationController
     elsif params[:venue]
       response = Show.where(venue: params[:venue])
     elsif params[:tour_id]
-      @shows = Show.where(tour_id: params[:tour_id]).sort_by{|show| show.id}
+      @shows = Show.where(tour_id: params[:tour_id]).sort_by{|show| show.id}.sort_by {|s| s.showdate}
       @reviews = Show.get_reviews(@shows)
       response = { :shows => @shows, :reviews => @reviews.flatten}
     elsif params[:show_id]
