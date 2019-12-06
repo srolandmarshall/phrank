@@ -32,7 +32,8 @@ export default function userReducer(state = {
         reviewUser: {},
         loading: false,
         saving: false,
-        deleting: false
+        deleting: false,
+        email: ""
       }
     case "SET_USER_PROFILE":
       console.log("Setting user for view...");

@@ -1,6 +1,6 @@
 class API::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authenticate_user_from_token!, except: [:show]
+  before_action :authenticate_user_from_token!, except: [:show, :create]
 
   # GET /users
   def index

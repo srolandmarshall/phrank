@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-import { registerUser } from '../actions/userActions'
+import { registerUser, loginUser } from '../actions/userActions'
 
 
 class SignUpContainer extends Component {
@@ -21,6 +21,8 @@ class SignUpContainer extends Component {
       ...this.state,
       registered: true
     })
+    debugger
+    this.props.loginUser(payload.email, this.state.password)
     this.props.history.push('/shows')
   }
 
@@ -94,7 +96,8 @@ class SignUpContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  registerUser: (email, password) => dispatch(registerUser(email, password))
+  registerUser: (email, password) => dispatch(registerUser(email, password)),
+  loginUser: (email, password) => dispatch(loginUser(email, password))
 })
 
 
