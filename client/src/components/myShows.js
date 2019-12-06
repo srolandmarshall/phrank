@@ -1,5 +1,5 @@
 import React from 'react'
-import ShowsContainer from '../containers/ShowsContainer'
+import MyShowsContainer from '../containers/MyShowsContainer'
 
 class MyShows extends React.Component{
 
@@ -7,7 +7,7 @@ class MyShows extends React.Component{
   return (
     <div>
       <h3>My Shows</h3>
-      <ShowsContainer />
+      <MyShowsContainer />
     </div>
   )}
 }

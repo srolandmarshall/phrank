@@ -6,7 +6,7 @@ import MyShows from './components/myShows'
 import LogOut from './components/LogOut'
 import User from './components/User'
 import SignUpContainer from './containers/SignUpContainer'
-import ShowContainer from './containers/ShowContainer'
+import ShowsContainer from './containers/ShowsContainer'
 import SignInContainer from './containers/SignInContainer'
 import Newest from './containers/Newest'
 import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
@@ -32,7 +32,7 @@ class Root extends React.Component {
           <Route path="/myshows" render={() => <MyShows />}/>
           <Route path="/newest" render={() => <Newest />}/>
           <Route path="/logout" render={() => <LogOut />} />
-          <Route path="/shows" render={() => <ShowContainer />} />
+          <Route path="/shows" render={() => <ShowsContainer />} />
         </Router>
     )
   }

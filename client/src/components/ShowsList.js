@@ -13,7 +13,6 @@ class ShowsList extends Component {
   render() {
     return(
       this.props.shows.map(show =>
-        <div>
         <Container>
           <Row>
             <Col>
@@ -29,7 +28,6 @@ class ShowsList extends Component {
             </Col>
           </Row>
         </Container>
-        </div>
         )
     );
   }
