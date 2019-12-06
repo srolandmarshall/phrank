@@ -6,6 +6,8 @@ import Show from './Show'
 import { removeShow } from '../actions/showActions'
 import { deleteReview } from '../actions/reviewActions'
 import ReviewsContainer from '../containers/ReviewsContainer'
+import ShowContainer  from '../containers/ShowContainer'
+
 
 
 class MyShowsList extends Component {
@@ -25,23 +27,11 @@ class MyShowsList extends Component {
 
   render() {
     return(
-      this.props.shows.shows.map(show =>
-        <div>
-        <Container>
-          <Row>
-            <Col sm={10} xs={10}>
-              <Show reviews={this.props.reviews} user={this.props.user} key={show.id} show={show} />
-            </Col>
-            <Col sm={2} xs={2}>
-              <Button className="removeShow" key={show.id} variant="outline-danger" size="sm" onClick={()=>this.handleClick(show.id)}>Remove Show</Button>
-            </Col>
-          </Row>
-          <Row>
-            <ReviewsContainer key={show.id} user={this.props.user} show={show} reviews={this.showReviews(this.props.reviews.reviews, show)}/>
-          </Row>
-        </Container>
-        </div>
-        )
+      <Row>
+        {this.props.shows.shows.map(show =>
+          <ShowContainer show={show} key={show.id} />
+        )}
+      </Row>
     );
   }
 };

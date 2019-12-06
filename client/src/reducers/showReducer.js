@@ -27,7 +27,7 @@ export default function showReducer(state = {
         return state
       }
       else {
-        return {...state, loading: false, saving: false, shows: [...state.shows, action.payload]}
+        return {...state, loading: false, saving: false, shows: [action.payload, ...state.shows]}
       }
     case "ADD_SHOWS":
       const new_shows = action.payload

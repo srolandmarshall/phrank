@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import { Container, Col } from 'react-bootstrap'
 import DatePicker from 'react-date-picker'
 import AddShowButton from './addShowButton'
+import { connect } from 'react-redux'
+import { fetchShow } from '../actions/showActions'
+
 
 var dateFormat = require('dateformat');
 
@@ -46,5 +49,17 @@ class ShowInput extends Component {
   }
 
 }
+const mapDispatchToProps = dispatch => ({
+  fetchShow: (date, user) => dispatch(fetchShow(date, user))
+})
 
-export default ShowInput;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    user: state.users,
+    userShows: state.shows.userShows,
+    shows: state.shows.shows,
+    reviews: state.reviews
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowInput);
