@@ -29,13 +29,14 @@ class addShowSwitch extends Component {
   render(){
     const sid = this.props.show.id
     if (this.props.userShows.find(function(e) {return e.id === sid})) {
-      return <Button variant="danger" onClick={this.handleRemoveSubmit.bind(this)}>Remove Show</Button>
-    } else {
+        return <Button variant="danger" onClick={this.handleRemoveSubmit.bind(this)}>Remove Show</Button>
+      }
+    else {
       return <Button variant="outline-info" onClick={this.handleAddSubmit.bind(this)}>Add Show</Button>
     }
   }
 
-}
+} //end class
 
 const mapDispatchToProps = dispatch => ({
   removeUserShow: (show, user) => dispatch(removeUserShow(show, user)),

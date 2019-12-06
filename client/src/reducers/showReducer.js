@@ -39,7 +39,12 @@ export default function showReducer(state = {
     case "ADD_USER_SHOW":
       return {...state, loading: false, saving: false, userShows: [...state.userShows, action.payload]}
     case "USE_USER_SHOWS":
-      return {...state, loading: false, saving: false, userShows: action.payload}
+      if (action.payload.error){
+        return state
+      }
+      else {
+        return {...state, loading: false, saving: false, userShows: action.payload}
+      }
     case "DELETE_USER_SHOW":
       const userShows = state.userShows.filter(show => show.id !== action.payload.id)
       return {...state, userShows, deleting: false}
