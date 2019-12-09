@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-import Show from './Show'
 import { removeShow } from '../actions/showActions'
 import { deleteReview } from '../actions/reviewActions'
-import ReviewsContainer from '../containers/ReviewsContainer'
 import ShowContainer  from '../containers/ShowContainer'
 
 

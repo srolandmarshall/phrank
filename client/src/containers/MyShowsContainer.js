@@ -3,7 +3,7 @@ import ShowInput from '../components/ShowInput'
 import MyShowsList from '../components/myShowsList'
 import { connect } from 'react-redux'
 
-import { clearShows, fetchShows } from '../actions/showActions'
+import { clearShows, fetchShows, fetchUserShows } from '../actions/showActions'
 import { fetchUserReviews } from '../actions/reviewActions'
 
 
@@ -18,6 +18,7 @@ class MyShowsContainer extends Component {
       this.props.fetchShows(uid)
       console.log("fetching reviews");
       this.props.fetchUserReviews(uid)
+      this.props.fetchUserShows(this.props.user.userId)
     }
   }
 
@@ -28,6 +29,7 @@ class MyShowsContainer extends Component {
       this.props.fetchShows(uid)
       console.log("fetching reviews");
       this.props.fetchUserReviews(uid)
+      this.props.fetchUserShows(this.props.user.userId)
     }
   }
 
@@ -52,7 +54,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   clearShows: () => dispatch(clearShows()),
   fetchUserReviews: (userId) => dispatch(fetchUserReviews(userId)),
-  fetchShows: userId => dispatch(fetchShows(userId))
+  fetchShows: userId => dispatch(fetchShows(userId)),
+  fetchUserShows: (userId) => dispatch(fetchUserShows(userId))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(MyShowsContainer);

@@ -40,6 +40,7 @@ export default function showReducer(state = {
       return {...state, loading: false, saving: false, userShows: [...state.userShows, action.payload]}
     case "USE_USER_SHOWS":
       if (action.payload.error){
+        debugger
         return state
       }
       else {
