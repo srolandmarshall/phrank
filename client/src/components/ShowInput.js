@@ -3,7 +3,7 @@ import { Container, Col } from 'react-bootstrap'
 import DatePicker from 'react-date-picker'
 import AddShowButton from './addShowButton'
 import { connect } from 'react-redux'
-import { fetchShow } from '../actions/showActions'
+import { fetchAndAddShow } from '../actions/showActions'
 
 
 var dateFormat = require('dateformat');
@@ -30,7 +30,7 @@ class ShowInput extends Component {
     })
     const shortDate = dateFormat(this.state.date, "shortDate")
     console.log("Submitted "+shortDate);
-    this.props.fetchShow(shortDate, this.props.user)
+    this.props.fetchAndAddShow(shortDate, this.props.user)
   }
 
   render() {
@@ -50,7 +50,7 @@ class ShowInput extends Component {
 
 }
 const mapDispatchToProps = dispatch => ({
-  fetchShow: (date, user) => dispatch(fetchShow(date, user))
+  fetchAndAddShow: (date, user) => dispatch(fetchAndAddShow(date, user))
 })
 
 const mapStateToProps = (state, ownProps) => {

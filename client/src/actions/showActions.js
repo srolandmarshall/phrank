@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-export const fetchShow = (showDate, user) => {
+export const fetchAndAddShow = (showDate, user) => {
    return (dispatch) => {
      dispatch({type:"LOADING"});
      const url = 'http://localhost:3001/api/shows/?showdate='+showDate
@@ -8,6 +8,17 @@ export const fetchShow = (showDate, user) => {
      return fetch(url)
        .then(response=>response.json())
        .then(data=>data.map(show => dispatch(addShow(show.id, user))))
+   }
+  }
+
+export const fetchShow = (id) => {
+   return (dispatch) => {
+     dispatch({type:"LOADING"});
+     const url = 'http://localhost:3001/api/shows/'+id
+     console.log(url);
+     return fetch(url)
+       .then(response=>response.json())
+       .then(data=>data.map(show => dispatch({type:"USE_SHOW", payload: data})))
    }
   }
 
@@ -75,7 +86,7 @@ export const addShow = (showId, user) => {
         'Authorization': user.userToken
       }
     }).then(response=>response.json())
-    .then(data=>dispatch({type:"ADD_SHOW", payload: data}))
+    .then(data=>dispatch({type:"ADD_SHOW_TO_USER", payload: data}))
   }
 }
 

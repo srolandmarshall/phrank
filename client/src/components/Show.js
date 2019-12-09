@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Row, Col, Card} from 'react-bootstrap'
-import parse from 'html-react-parser';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Row, Col, Card } from 'react-bootstrap'
+import parse from 'html-react-parser';
 import AddShowSwitch from '../components/addShowSwitch'
 
 class Show extends Component {
@@ -11,7 +12,7 @@ class Show extends Component {
     const {show} = this.props;
     return (
       <Card>
-        <Card.Header as="h4">{show.showdate}</Card.Header>
+        <Card.Header as="h4"><Link to={{pathname: `/shows/${show.id}`}}>{show.showdate}</Link></Card.Header>
         <Card.Body>
           <Row>
             <Col xl="auto">
@@ -28,7 +29,6 @@ class Show extends Component {
       </Card>
     )
   }
-
 }
 
 export default connect(null,null)(Show);

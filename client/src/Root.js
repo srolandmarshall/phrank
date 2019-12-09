@@ -5,6 +5,7 @@ import App from './App'
 import MyShows from './components/myShows'
 import LogOut from './components/LogOut'
 import User from './components/User'
+import Show from './components/Show'
 import SignUpContainer from './containers/SignUpContainer'
 import ShowsContainer from './containers/ShowsContainer'
 import SignInContainer from './containers/SignInContainer'
@@ -27,6 +28,7 @@ class Root extends React.Component {
           <NavBar />
           <Route exact path="/" render={() => <App />}/>
           <Route path="/users/:id" component={User} />
+          <Route path="/shows/:id" component={Show} />
           <Route path="/sign_in" render={()=> <SignInContainer />}/>
           <Route path="/sign_up" render={()=> <SignUpContainer />}/>
           <Route path="/myshows" render={() => <MyShows />}/>

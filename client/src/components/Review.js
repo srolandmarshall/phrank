@@ -7,15 +7,9 @@ import ReviewDate from './ReviewDate'
 
 class Review extends Component {
 
-  componentDidMount(){
-  }
-
-  componentDidUpdate(prevProps){
-  }
-
   handleClick = (event) => {
     event.preventDefault();
-      this.props.deleteReview(this.props.review, this.props.user)
+    this.props.deleteReview(this.props.review, this.props.user)
   }
 
   render(){
