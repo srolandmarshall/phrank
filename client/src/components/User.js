@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import {fetchShows} from '../actions/showActions'
@@ -19,7 +19,7 @@ class User extends Component {
   }
 
   render() {
-    const {match, user} = this.props
+    const {user} = this.props
     return (<Container>
       <Row><h1>{`${user.email}'s Shows`} </h1></Row>
       <ShowsList shows={this.props.shows} reviews={this.props.reviews}/>

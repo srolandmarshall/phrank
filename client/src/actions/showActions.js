@@ -18,7 +18,7 @@ export const fetchShow = (id) => {
      console.log(url);
      return fetch(url)
        .then(response=>response.json())
-       .then(data=>data.map(show => dispatch({type:"USE_SHOW", payload: data})))
+       .then(data=>dispatch({type:"USE_SHOW", payload: data}))
    }
   }
 
