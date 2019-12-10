@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Container, Row, Col, Button, Card} from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 
 import { fetchShow } from '../actions/showActions'
+import { fetchReviews } from '../actions/reviewActions'
 import ShowContainer from '../containers/ShowContainer'
 
 class ShowPage extends Component{
@@ -12,12 +13,14 @@ class ShowPage extends Component{
     const {match} = this.props
     const showId = match.params.id
     this.props.fetchShow(showId)
+    this.props.fetchReviews("http://localhost:3001/api/reviews/?show_id="+showId)
   }
 
   componentDidMount(){
     const {match} = this.props
     const showId = match.params.id
     this.props.fetchShow(showId)
+    this.props.fetchReviews("http://localhost:3001/api/reviews/?show_id="+showId)
   }
 
   render(){
@@ -32,13 +35,14 @@ class ShowPage extends Component{
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    show: state.shows.show.show,
+    show: state.shows.show,
     shows: state.shows
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchShow: (id) => dispatch(fetchShow(id))
+  fetchShow: (id) => dispatch(fetchShow(id)),
+  fetchReviews: url => dispatch(fetchReviews(url))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(ShowPage);

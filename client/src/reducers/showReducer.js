@@ -4,7 +4,7 @@ const showExists = (state, show) => {
 
 export default function showReducer(state = {
   shows: [],
-  show: {show: {}, reviews: []},
+  show: {},
   userShows: [],
   tours: [],
   loading: false,
@@ -22,7 +22,7 @@ export default function showReducer(state = {
       console.log("Removing from DB...");
       return {...state, deleting: true};
     case "USE_SHOW":
-      console.log("Using show "+action.payload.show.id);
+      console.log("Using show "+action.payload.id);
       return {...state, loading: false, show: action.payload}
     case "USE_SHOWS":
       return {...state, loading: false, saving: false, shows: action.payload}

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Reviews from '../components/Reviews'
 import ReviewInput from '../components/ReviewInput'
 
-
 const showReviews = (reviews, show) => {
   if (reviews) {
     return reviews.filter(review => review.show_id === show.id)
@@ -24,8 +23,9 @@ const isReviewedByUser = (reviews, show, user) => {
 class ReviewsContainer extends Component {
 
   render(){
-    const reviews = showReviews(this.props.reviews, this.props.show)
-    if (isReviewedByUser(reviews,this.props.show,this.props.user)){
+    const {user, show} = this.props
+    const reviews = showReviews(this.props.reviews, show)
+    if (isReviewedByUser(reviews, show, user)){
       return (
         <Container>
           <Col>
@@ -35,21 +35,22 @@ class ReviewsContainer extends Component {
         </Container>)
     }
     else if (reviews.length > 0) {
-      return (<Container>
-      <Col>
-        <ReviewInput show={this.props.show} user={this.props.user} />
-        <h5>Reviews:</h5>
-        <Reviews reviews={reviews} show={this.props.show} />
-      </Col>
+      return (
+      <Container>
+        <Col>
+          <ReviewInput show={this.props.show} user={this.props.user} />
+          <h5>Reviews:</h5>
+          <Reviews reviews={reviews} show={this.props.show} />
+        </Col>
       </Container>)
 
     }
     else {
       return (
         <Container>
-        <Col>
-          <ReviewInput show={this.props.show} user={this.props.user} />
-        </Col>
+          <Col>
+            <ReviewInput show={this.props.show} user={this.props.user} />
+          </Col>
         </Container>)
     }
   }

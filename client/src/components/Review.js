@@ -13,7 +13,7 @@ class Review extends Component {
   }
 
   render(){
-    const {review, user, reviewUser} = this.props;
+    const {review, user} = this.props;
     if (review.user_id === user.userId) {
       return <Container>
         <Row>
@@ -30,7 +30,7 @@ class Review extends Component {
       return <Container>
         <Row>
           <Col>
-            <h6><Link to={{pathname: `/users/${reviewUser.id}`}}>{reviewUser.email}</Link> wrote:</h6>
+            <h6><Link to={{pathname: `/users/${review.user_id}`}}>{review.user.email}</Link> wrote:</h6>
           </Col>
         </Row>
         <Row>

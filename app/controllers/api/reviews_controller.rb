@@ -16,7 +16,7 @@ class API::ReviewsController < ApplicationController
 
   # GET /reviews/1
   def show
-    render json: @review
+    render json: @review, :include => :user
   end
 
   # POST /reviews
