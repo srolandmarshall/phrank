@@ -22,7 +22,7 @@ class User extends Component {
     const {user} = this.props
     return (<Container>
       <Row><h1>{`${user.email}'s Shows`} </h1></Row>
-      <ShowsList shows={this.props.shows} reviews={this.props.reviews}/>
+      <ShowsList />
     </Container>)
   }
 }

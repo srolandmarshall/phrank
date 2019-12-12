@@ -17,7 +17,7 @@ class Newest extends Component {
   render(){
     return (<Container>
       <Row><h2>Recently Reviewed Shows</h2></Row>
-      <ShowsList shows={this.props.shows}/>
+      <ShowsList />
     </Container>)
   }
 }
