@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Container, Col, Row } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import ShowsList from '../components/ShowsList'
-import ReviewsContainer from './ReviewsContainer'
 import { fetchNewestReviews } from '../actions/reviewActions'
 import { fetchNewestShows } from '../actions/showActions'
 
