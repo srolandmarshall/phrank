@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import Review from '../components/Review'
 // TODO: add remove review button
-class Reviews extends Component {
-
-  render() {
+function Reviews(props) {
     return(
-      this.props.reviews.map(review =>
-        <Review key={review.id} show={this.props.show} review={review} reviewUser={review.user}/>)
+      props.reviews.map(review =>
+        <Review key={review.id} show={props.show} review={review} reviewUser={review.user}/>)
     );
   }
-}
 
-export default connect(null,null)(Reviews)
+export default Reviews
