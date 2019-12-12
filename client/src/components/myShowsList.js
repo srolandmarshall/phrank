@@ -39,7 +39,12 @@ const mapDispatchToProps = dispatch => ({
   deleteReview: (review, user) => dispatch(deleteReview(review, user))
 })
 
-// const mapStateToProps = (state, ownProps) => ({
-// })
+const mapStateToProps = (state, ownProps) => {
+  return {
+    shows: state.shows,
+    user: state.users,
+    reviews: state.reviews
+  }
+}
 
-export default connect(null,mapDispatchToProps)(MyShowsList);
+export default connect(mapStateToProps,mapDispatchToProps)(MyShowsList);
