@@ -3,8 +3,6 @@ import { Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { createReview } from '../actions/reviewActions'
 
-
-
 class ReviewInput extends Component {
 
   state = {

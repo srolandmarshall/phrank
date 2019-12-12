@@ -25,7 +25,7 @@ class Root extends React.Component {
   render() {
     return (
         <Router>
-          <NavBar />
+          <NavBar userId={this.props.user.userId}/>
           <Route exact path="/" render={() => <App />}/>
           <Route path="/users/:id" component={User} />
           <Route path="/shows/:id" component={ShowPage} />
