@@ -31,8 +31,11 @@ class addShowSwitch extends Component {
     if (this.props.userShows.find(function(e) {return e.id === sid})) {
         return <Button variant="danger" onClick={this.handleRemoveSubmit.bind(this)}>Remove Show</Button>
       }
-    else {
+    else if (this.props.user.userId > 0) {
       return <Button variant="outline-info" onClick={this.handleAddSubmit.bind(this)}>Add Show</Button>
+    }
+    else {
+      return ""
     }
   }
 
