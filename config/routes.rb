@@ -6,7 +6,7 @@ namespace :api do
   get '/shows/tours', to: 'shows#tours'
   get 'reviews/mostrecent', to: 'reviews#mostrecent'
   get 'shows/mostrecent', to: 'shows#mostrecent'
-
+  get 'shows/random', to: 'shows#random'
 
   resources :shows do
     resources :reviews
