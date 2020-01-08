@@ -9,6 +9,7 @@ import ShowPage from './components/ShowPage'
 import SignUpContainer from './containers/SignUpContainer'
 import ShowsContainer from './containers/ShowsContainer'
 import SignInContainer from './containers/SignInContainer'
+import Random from './containers/RandomShow'
 import Newest from './containers/Newest'
 import {registerUser, loginUser, getCurrentUser} from './actions/userActions'
 import NavBar from './components/NavBar'
@@ -33,6 +34,7 @@ class Root extends React.Component {
           <Route path="/sign_up" render={()=> <SignUpContainer />}/>
           <Route path="/myshows" render={() => <MyShows />}/>
           <Route path="/newest" render={() => <Newest />}/>
+          <Route path="/random" render={() => <Random />} />
           <Route path="/logout" render={() => <LogOut />} />
           <Route exact path="/shows" render={() => <ShowsContainer />} />
         </Router>
