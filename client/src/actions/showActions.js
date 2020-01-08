@@ -23,6 +23,18 @@ export const fetchShow = (id) => {
    }
   }
 
+  export const fetchRandomShow = () => {
+     return (dispatch) => {
+       dispatch({type:"LOADING"});
+       const url = 'http://localhost:3001/api/shows/random'
+       console.log(url);
+       return fetch(url)
+         .then(response=>response.json())
+         .then(data=>dispatch({type:"USE_SHOW", payload: data}))
+       .catch(error=>console.log(error))
+     }
+    }
+
 export const getTours = () => {
   return (dispatch) => {
     dispatch({type:"LOADING"});
