@@ -26,8 +26,6 @@ class ShowPage extends Component{
   render(){
     return (
       <Col>
-        <h1>{this.props.show.location} - {this.props.show.showdate}</h1>
-        <h2>Part of the {this.props.show.tour_name}</h2>
         <ShowContainer solo={true} show={this.props.show}/>
       </Col>
     )}

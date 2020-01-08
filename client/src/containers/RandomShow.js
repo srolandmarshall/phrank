@@ -25,8 +25,6 @@ class RandomShow extends Component {
     if (Object.entries(show).length > 0){
         return (
           <Col>
-            <h1>{this.props.show.location} - {this.props.show.showdate}</h1>
-            <h2>Part of the {this.props.show.tour_name}</h2>
             <ShowContainer solo={true} show={this.props.show}/>
           </Col>
         )}
