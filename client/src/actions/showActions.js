@@ -30,14 +30,12 @@ export const fetchShow = (id) => {
       return fetch(url, {
         method: 'GET',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
           'Authorization': process.env.REACT_APP_PHISHIN_API_KEY
         }
-        .then(response=>response.json())
-        .then(data=>dispatch({type:"USE_PHISHIN_DATA", payload: data}))
-        .catch(error=>console.log(error))
       })
+      .then(response=>response.json())
+      .then(data=>dispatch({type:"USE_PHISHIN_DATA", payload: data}))
+      .catch(error=>console.log(error))
     }
   }
 
