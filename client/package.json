@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.1.1",
+    "amplitudejs": "^5.0.3",
     "bootstrap": "^4.3.1",
     "dateformat": "^3.0.3",
     "handlebars": "^4.5.3",
