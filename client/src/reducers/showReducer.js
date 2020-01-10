@@ -5,6 +5,7 @@ const showExists = (state, show) => {
 export default function showReducer(state = {
   shows: [],
   show: {},
+  phishin: {},
   userShows: [],
   tours: [],
   loading: false,
@@ -57,6 +58,8 @@ export default function showReducer(state = {
       return {...state, shows, deleting: false}
     case "ADD_TOURS":
       return {...state, tours: action.payload}
+    case "USE_PHISHIN_DATA":
+      return {...state, phishin: action.payload}
     default:
       return state;
   }

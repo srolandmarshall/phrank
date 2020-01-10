@@ -23,6 +23,24 @@ export const fetchShow = (id) => {
    }
   }
 
+  export const fetchShowFromPhishIn = (date) => {
+    return (dispatch) => {
+      dispatch({type:"LOADING"});
+      const url = 'http://phish.in/api/v1/shows/'+date
+      return fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': process.env.REACT_APP_PHISHIN_API_KEY
+        }
+        .then(response=>response.json())
+        .then(data=>dispatch({type:"USE_PHISHIN_DATA", payload: data}))
+        .catch(error=>console.log(error))
+      })
+    }
+  }
+
   export const fetchRandomShow = () => {
      return (dispatch) => {
        dispatch({type:"LOADING"});
