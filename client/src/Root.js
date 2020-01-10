@@ -37,6 +37,7 @@ class Root extends React.Component {
           <Route path="/random" render={() => <Random />} />
           <Route path="/logout" render={() => <LogOut />} />
           <Route exact path="/shows" render={() => <ShowsContainer />} />
+          <p className="tos">This site voluntarily complies with the Phish fan web site and audio trading policy at <a href="https://www.phish.com/faq/web-guidelines&#8221">Phish.com</a></p>
         </Router>
     )
   }

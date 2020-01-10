@@ -41,6 +41,11 @@ p.date {
   padding: 0;
 }
 
+p.tos {
+  text-align: center;
+  font-size: 7pt;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
